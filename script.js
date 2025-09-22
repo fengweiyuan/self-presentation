@@ -9,7 +9,9 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeParallax();
     initializePdfExport();
     initializeDatabaseIconClick();
-    initializeMindMap();
+    
+    // 延迟初始化数据库脑图
+    setTimeout(initializeDatabaseMindMap, 1000);
 });
 
 // 导航栏功能
@@ -470,6 +472,13 @@ createScrollProgress();
 // 添加键盘导航支持
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
+        // 检查是否在全屏模式
+        const container = document.querySelector('.mindmap-container');
+        if (container && container.classList.contains('fullscreen')) {
+            toggleDatabaseFullscreen();
+            return;
+        }
+        
         // 关闭移动端菜单
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
@@ -840,148 +849,157 @@ function showClickSuccessMessage() {
     }, 3000);
 }
 
-// 初始化脑图
-function initializeMindMap() {
+// 初始化数据库脑图
+function initializeDatabaseMindMap() {
     // 检查是否有GoJS库
     if (typeof go === 'undefined') {
-        console.warn('GoJS library not loaded');
+        console.warn('GoJS library not loaded, retrying in 1 second...');
+        setTimeout(initializeDatabaseMindMap, 1000);
+        return;
+    }
+
+    console.log('GoJS loaded successfully, initializing database mindmap...');
+    
+    // 检查容器是否存在
+    const diagramDiv = document.getElementById('databaseDiagramDiv');
+    if (!diagramDiv) {
+        console.error('Database mindmap container not found!');
         return;
     }
 
     const $ = go.GraphObject.make;
-    const diagram = $(go.Diagram, "myDiagramDiv", {
-        layout: $(go.TreeLayout, { 
-            angle: 0, 
-            layerSpacing: 80,
-            nodeSpacing: 20,
-            arrangement: go.TreeLayout.ArrangementHorizontal
-        }),
-        "undoManager.isEnabled": true,
-        initialAutoScale: go.Diagram.Uniform,
-        contentAlignment: go.Spot.Center,
-        padding: 20
-    });
+    
+    try {
+        const diagram = $(go.Diagram, "databaseDiagramDiv", {
+            layout: $(go.TreeLayout, { angle: 0, layerSpacing: 50 })
+        });
+        
+        // 将图表实例存储到DOM元素上，以便全屏时访问
+        diagramDiv.goDiagram = diagram;
 
-    // 节点模板
-    diagram.nodeTemplate =
-        $(go.Node, "Auto",
-            { 
-                selectable: false,
-                mouseEnter: function(e, obj) {
-                    obj.findObject("SHAPE").fill = "#E3F2FD";
-                },
-                mouseLeave: function(e, obj) {
-                    const level = obj.data.level || 0;
-                    const colors = ["#007aff", "#1976D2", "#42A5F5", "#90CAF9", "#E3F2FD"];
-                    obj.findObject("SHAPE").fill = colors[Math.min(level, colors.length - 1)];
-                }
-            },
-            $(go.Shape, "RoundedRectangle",
-                { 
-                    name: "SHAPE",
-                    strokeWidth: 2,
-                    stroke: "#007aff"
-                },
-                new go.Binding("fill", "level", function(level) {
-                    const colors = ["#007aff", "#1976D2", "#42A5F5", "#90CAF9", "#E3F2FD"];
-                    return colors[Math.min(level || 0, colors.length - 1)];
-                })
-            ),
-            $(go.TextBlock,
-                { 
-                    margin: 12, 
-                    font: "bold 12px Microsoft YaHei, sans-serif", 
-                    stroke: "white",
-                    maxSize: new go.Size(200, NaN),
-                    wrap: go.TextBlock.WrapFit
-                },
-                new go.Binding("text", "key"),
-                new go.Binding("stroke", "level", function(level) {
-                    return level === 0 ? "white" : (level <= 2 ? "white" : "#333");
-                })
-            )
-        );
+        diagram.nodeTemplate =
+            $(go.Node, "Auto",
+                $(go.Shape, "RoundedRectangle",
+                    { fill: "#DFF3FF", stroke: "#0288D1", strokeWidth: 2 }),
+                $(go.TextBlock,
+                    { margin: 10, font: "bold 14px Microsoft YaHei", stroke: "#333" },
+                    new go.Binding("text", "key"))
+            );
 
-    // 连接线模板
-    diagram.linkTemplate =
-        $(go.Link,
-            { routing: go.Link.Orthogonal, corner: 5 },
-            $(go.Shape, { strokeWidth: 2, stroke: "#007aff" })
-        );
+        diagram.model = new go.TreeModel([
+            { key: "交易所数据库支持" },
+            { key: "性能与稳定性", parent: "交易所数据库支持" },
+            { key: "架构优化", parent: "性能与稳定性" },
+            { key: "多云数据库产品比对", parent: "架构优化" },
+            { key: "场景最佳实践文档", parent: "架构优化" },
+            { key: "读写分离、连接池、分库分表、缓存策略", parent: "架构优化" },
+            { key: "监控与预警", parent: "性能与稳定性" },
+            { key: "云监控与个性化监控", parent: "监控与预警" },
+            { key: "慢查询、QPS、延迟、CPU、存储空间、连接数", parent: "监控与预警" },
+            { key: "帮助业务团队提前发现热点、慢SQL、优化建议", parent: "监控与预警" },
 
-    // 创建节点数据并计算层级
-    const nodeDataArray = [
-        { key: "交易所数据库支持", level: 0 },
-        
-        // 第一层
-        { key: "性能与稳定性", parent: "交易所数据库支持", level: 1 },
-        { key: "数据安全与合规", parent: "交易所数据库支持", level: 1 },
-        { key: "多云架构与成本优化", parent: "交易所数据库支持", level: 1 },
-        { key: "开发支持与效率提升", parent: "交易所数据库支持", level: 1 },
-        { key: "数据服务化", parent: "交易所数据库支持", level: 1 },
+            { key: "数据安全与合规", parent: "交易所数据库支持" },
+            { key: "权限与账号管理", parent: "数据安全与合规" },
+            { key: "管控策略、最小权限", parent: "权限与账号管理" },
+            { key: "审计与合规", parent: "数据安全与合规" },
+            { key: "审计日志、访问记录、操作记录", parent: "审计与合规" },
+            { key: "数据加密与脱敏", parent: "数据安全与合规" },
+            { key: "数据合规要求/GDPR等", parent: "数据加密与脱敏" },
 
-        // 性能与稳定性分支
-        { key: "架构优化", parent: "性能与稳定性", level: 2 },
-        { key: "监控与预警", parent: "性能与稳定性", level: 2 },
-        
-        { key: "多云数据库产品比对", parent: "架构优化", level: 3 },
-        { key: "场景最佳实践文档", parent: "架构优化", level: 3 },
-        { key: "读写分离、连接池、分库分表、缓存策略", parent: "架构优化", level: 3 },
-        
-        { key: "云监控与个性化监控", parent: "监控与预警", level: 3 },
-        { key: "慢查询、QPS、延迟、CPU、存储空间、连接数", parent: "监控与预警", level: 3 },
-        { key: "帮助业务团队提前发现热点、慢SQL、优化建议", parent: "监控与预警", level: 3 },
+            { key: "多云架构与成本优化", parent: "交易所数据库支持" },
+            { key: "跨云容灾", parent: "多云架构与成本优化" },
+            { key: "备份与恢复,数据安全", parent: "跨云容灾" },
+            { key: "灾难测试，反脆弱设计，鲁棒性", parent: "跨云容灾" },
+            { key: "多云数据库统一管理平台", parent: "多云架构与成本优化" },
+            { key: "统一元数据，抽象与屏蔽差异", parent: "多云数据库统一管理平台" },
+            { key: "合规与避免单一风险", parent: "跨云容灾" },
+            { key: "DTS/DMS/开源方案/厂商支持", parent: "跨云容灾" },
+            { key: "成本监控与优化", parent: "多云架构与成本优化" },
+            { key: "实例规格、存储开销、IOPS、访问密度", parent: "成本监控与优化" },
+            { key: "提出合理方案：冷热分离、分层存储、容量规划", parent: "成本监控与优化" },
+            { key: "弹性伸缩，帮助在低峰期节省成本", parent: "成本监控与优化" },
 
-        // 数据安全与合规分支
-        { key: "权限与账号管理", parent: "数据安全与合规", level: 2 },
-        { key: "审计与合规", parent: "数据安全与合规", level: 2 },
-        { key: "数据加密与脱敏", parent: "数据安全与合规", level: 2 },
-        
-        { key: "管控策略、最小权限", parent: "权限与账号管理", level: 3 },
-        { key: "审计日志、访问记录、操作记录", parent: "审计与合规", level: 3 },
-        { key: "数据合规要求/GDPR等", parent: "数据加密与脱敏", level: 3 },
+            { key: "开发支持与效率提升", parent: "交易所数据库支持" },
+            { key: "数据库沙箱&自动化", parent: "开发支持与效率提升" },
+            { key: "快照，隔离，脱敏", parent: "数据库沙箱&自动化" },
+            { key: "回归测试，灰度发布，演示", parent: "数据库沙箱&自动化" },
+            { key: "CI/CD与迁移自动化", parent: "开发支持与效率提升" },
+            { key: "SQL规范与优化手册", parent: "开发支持与效率提升" },
+            { key: "索引设计与查询优化手册", parent: "SQL规范与优化手册" },
+            { key: "自动化索引分析工具", parent: "SQL规范与优化手册" },
+            { key: "数据库架构师结合业务协助优化", parent: "SQL规范与优化手册" },
+            { key: "业务顾问", parent: "开发支持与效率提升" },
+            { key: "战略顾问，业务建模", parent: "业务顾问" },
+            { key: "数据架构，数据治理", parent: "业务顾问" },
 
-        // 多云架构与成本优化分支
-        { key: "跨云容灾", parent: "多云架构与成本优化", level: 2 },
-        { key: "多云数据库统一管理平台", parent: "多云架构与成本优化", level: 2 },
-        { key: "成本监控与优化", parent: "多云架构与成本优化", level: 2 },
+            { key: "数据服务化", parent: "交易所数据库支持" },
+            { key: "公共查询API", parent: "数据服务化" },
+            { key: "避免重复拼接SQL开发，降低慢SQL概率", parent: "公共查询API" },
+            { key: "数据仓库与BI", parent: "数据服务化" },
+            { key: "数据分析与报表", parent: "数据仓库与BI" },
+            { key: "历史交易，用户行为，风控，增长，运营分析", parent: "数据仓库与BI" },
+        ]);
         
-        { key: "备份与恢复,数据安全", parent: "跨云容灾", level: 3 },
-        { key: "灾难测试，反脆弱设计，鲁棒性", parent: "跨云容灾", level: 3 },
-        { key: "合规与避免单一风险", parent: "跨云容灾", level: 3 },
-        { key: "DTS/DMS/开源方案/厂商支持", parent: "跨云容灾", level: 3 },
+        console.log('Database mindmap initialized successfully!');
         
-        { key: "统一元数据，抽象与屏蔽差异", parent: "多云数据库统一管理平台", level: 3 },
+        // 添加全屏按钮事件监听
+        const fullscreenBtn = document.getElementById('databaseFullscreenBtn');
+        if (fullscreenBtn) {
+            fullscreenBtn.addEventListener('click', function() {
+                toggleDatabaseFullscreen();
+            });
+        }
         
-        { key: "实例规格、存储开销、IOPS、访问密度", parent: "成本监控与优化", level: 3 },
-        { key: "提出合理方案：冷热分离、分层存储、容量规划", parent: "成本监控与优化", level: 3 },
-        { key: "弹性伸缩，帮助在低峰期节省成本", parent: "成本监控与优化", level: 3 },
-
-        // 开发支持与效率提升分支
-        { key: "数据库沙箱&自动化", parent: "开发支持与效率提升", level: 2 },
-        { key: "CI/CD与迁移自动化", parent: "开发支持与效率提升", level: 2 },
-        { key: "SQL规范与优化手册", parent: "开发支持与效率提升", level: 2 },
-        { key: "业务顾问", parent: "开发支持与效率提升", level: 2 },
-        
-        { key: "快照，隔离，脱敏", parent: "数据库沙箱&自动化", level: 3 },
-        { key: "回归测试，灰度发布，演示", parent: "数据库沙箱&自动化", level: 3 },
-        
-        { key: "索引设计与查询优化手册", parent: "SQL规范与优化手册", level: 3 },
-        { key: "自动化索引分析工具", parent: "SQL规范与优化手册", level: 3 },
-        { key: "数据库架构师结合业务协助优化", parent: "SQL规范与优化手册", level: 3 },
-        
-        { key: "战略顾问，业务建模", parent: "业务顾问", level: 3 },
-        { key: "数据架构，数据治理", parent: "业务顾问", level: 3 },
-
-        // 数据服务化分支
-        { key: "公共查询API", parent: "数据服务化", level: 2 },
-        { key: "数据仓库与BI", parent: "数据服务化", level: 2 },
-        
-        { key: "避免重复拼接SQL开发，降低慢SQL概率", parent: "公共查询API", level: 3 },
-        
-        { key: "数据分析与报表", parent: "数据仓库与BI", level: 3 },
-        { key: "历史交易，用户行为，风控，增长，运营分析", parent: "数据仓库与BI", level: 3 }
-    ];
-
-    diagram.model = new go.TreeModel(nodeDataArray);
+    } catch (error) {
+        console.error('Error initializing database mindmap:', error);
+        // 显示错误信息给用户
+        if (diagramDiv) {
+            diagramDiv.innerHTML = `
+                <div style="display: flex; align-items: center; justify-content: center; height: 100%; background: #f8f9fa; border-radius: 15px; color: #666;">
+                    <div style="text-align: center;">
+                        <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: #ffc107; margin-bottom: 1rem;"></i>
+                        <h3>脑图加载失败</h3>
+                        <p>请刷新页面重试</p>
+                    </div>
+                </div>
+            `;
+        }
+    }
 }
+
+// 数据库脑图全屏功能
+function toggleDatabaseFullscreen() {
+    const container = document.querySelector('.mindmap-container');
+    const fullscreenBtn = document.getElementById('databaseFullscreenBtn');
+    const fullscreenIcon = fullscreenBtn.querySelector('i');
+    
+    if (!container.classList.contains('fullscreen')) {
+        // 进入全屏
+        container.classList.add('fullscreen');
+        fullscreenIcon.className = 'fas fa-compress';
+        fullscreenBtn.title = '退出全屏';
+        
+        // 调整脑图大小
+        const diagramDiv = document.getElementById('databaseDiagramDiv');
+        if (diagramDiv && diagramDiv.goDiagram) {
+            setTimeout(() => {
+                diagramDiv.goDiagram.requestUpdate();
+            }, 100);
+        }
+    } else {
+        // 退出全屏
+        container.classList.remove('fullscreen');
+        fullscreenIcon.className = 'fas fa-expand';
+        fullscreenBtn.title = '全屏';
+        
+        // 调整脑图大小
+        const diagramDiv = document.getElementById('databaseDiagramDiv');
+        if (diagramDiv && diagramDiv.goDiagram) {
+            setTimeout(() => {
+                diagramDiv.goDiagram.requestUpdate();
+            }, 100);
+        }
+    }
+}
+
+

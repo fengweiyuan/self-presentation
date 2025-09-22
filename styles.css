@@ -986,8 +986,15 @@ section {
     font-weight: 500;
 }
 
-/* 业务范围脑图部分 */
-.business-scope {
+
+/* OKX职责部分 */
+.okx-duties {
+    background: #0f1419;
+    color: white;
+}
+
+/* 数据库支持脑图部分 */
+.database-mindmap {
     background: #1a2332;
     color: white;
     padding: 100px 0;
@@ -1046,19 +1053,66 @@ section {
     overflow: hidden;
 }
 
-/* 隐藏GoJS水印 */
-.mindmap-diagram canvas + div {
-    display: none !important;
-}
-
-.mindmap-diagram div[style*="position: absolute"][style*="bottom: 0px"][style*="right: 0px"] {
-    display: none !important;
-}
-
-/* OKX职责部分 */
-.okx-duties {
+/* 全屏样式 */
+.mindmap-container.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
     background: #0f1419;
+    border-radius: 0;
+    padding: 1rem;
+    margin: 0;
+}
+
+.mindmap-container.fullscreen .mindmap-diagram {
+    height: calc(100vh - 2rem);
+}
+
+.mindmap-container.fullscreen .mindmap-controls {
+    top: 1rem;
+    right: 1rem;
+}
+
+/* 全屏时的背景遮罩 */
+.mindmap-container.fullscreen::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 20, 25, 0.95);
+    z-index: -1;
+}
+
+/* ESC键提示 */
+.mindmap-container.fullscreen::after {
+    content: '按 ESC 键或点击退出全屏按钮退出';
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 122, 255, 0.9);
     color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    z-index: 10;
+    animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
 }
 
 .duties-content {
@@ -1379,9 +1433,6 @@ section {
         grid-template-columns: 1fr;
     }
     
-    .mindmap-diagram {
-        height: 500px;
-    }
 }
 
 @media (max-width: 480px) {
@@ -1476,4 +1527,7 @@ section {
 
 @keyframes spin {
     to { transform: rotate(360deg); }
+}
+
+    color: transparent !important;
 }
