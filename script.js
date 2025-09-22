@@ -861,7 +861,7 @@ function initializeDatabaseMindMap() {
     console.log('GoJS loaded successfully, initializing database mindmap...');
     
     // 检查容器是否存在
-    const diagramDiv = document.getElementById('databaseDiagramDiv');
+    const diagramDiv = document.getElementById('myDiagramDiv');
     if (!diagramDiv) {
         console.error('Database mindmap container not found!');
         return;
@@ -870,7 +870,7 @@ function initializeDatabaseMindMap() {
     const $ = go.GraphObject.make;
     
     try {
-        const diagram = $(go.Diagram, "databaseDiagramDiv", {
+        const diagram = $(go.Diagram, "myDiagramDiv", {
             layout: $(go.TreeLayout, { angle: 0, layerSpacing: 50 })
         });
         
@@ -980,7 +980,7 @@ function toggleDatabaseFullscreen() {
         fullscreenBtn.title = '退出全屏';
         
         // 调整脑图大小
-        const diagramDiv = document.getElementById('databaseDiagramDiv');
+        const diagramDiv = document.getElementById('myDiagramDiv');
         if (diagramDiv && diagramDiv.goDiagram) {
             setTimeout(() => {
                 diagramDiv.goDiagram.requestUpdate();
@@ -993,7 +993,7 @@ function toggleDatabaseFullscreen() {
         fullscreenBtn.title = '全屏';
         
         // 调整脑图大小
-        const diagramDiv = document.getElementById('databaseDiagramDiv');
+        const diagramDiv = document.getElementById('myDiagramDiv');
         if (diagramDiv && diagramDiv.goDiagram) {
             setTimeout(() => {
                 diagramDiv.goDiagram.requestUpdate();
@@ -1001,5 +1001,6 @@ function toggleDatabaseFullscreen() {
         }
     }
 }
+
 
 
