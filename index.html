@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人经历展示 - 数据库专家</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gojs/2.3.16/go.js"></script>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-database"></i>
+                <span>数据库负责人</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">首页</a></li>
+                <li><a href="#about" class="nav-link">关于我</a></li>
+                <li><a href="#projects" class="nav-link">项目</a></li>
+                <li><a href="#skills" class="nav-link">技能</a></li>
+                <li><a href="#intention" class="nav-link">求职意向</a></li>
+                <li><a href="#business-scope" class="nav-link">业务范围</a></li>
+                <li><a href="#okx" class="nav-link">OKX职责</a></li>
+                <li><button id="exportPdfBtn" class="nav-link pdf-btn">
+                    <i class="fas fa-file-pdf"></i>
+                    导出PDF
+                </button></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 首页部分 -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
+                <div class="shape shape-5"></div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="title-line">数据库架构师</span>
+                    <span class="title-line">与</span>
+                    <span class="title-line highlight">DBA专家</span>
+                </h1>
+                <p class="hero-subtitle">专注于高性能数据库设计与运维，在OKX交易所担任DBA负责人</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="scrollToSection('about')">
+                        <i class="fas fa-user"></i>
+                        了解我
+                    </button>
+                    <button class="btn btn-secondary" onclick="scrollToSection('projects')">
+                        <i class="fas fa-code"></i>
+                        查看项目
+                    </button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="database-animation">
+                    <div class="db-server">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <div class="data-flow">
+                        <div class="flow-line"></div>
+                        <div class="flow-line"></div>
+                        <div class="flow-line"></div>
+                    </div>
+                    <div class="db-nodes">
+                        <div class="node primary">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="node secondary">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="node tertiary">
+                            <i class="fas fa-database"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- 关于我部分 -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">关于我</h2>
+                <p class="section-subtitle">专业背景与个人简介</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="intro-card">
+                        <div class="card-header">
+                            <i class="fas fa-user-circle"></i>
+                            <h3>个人简介</h3>
+                        </div>
+                        <p>拥有十三年数据库管理与架构实战经验，并深耕数据库运维平台设计开发领域，尤其在分布式 NoSQL 集群运维与数据库架构设计方向积累了深厚的技术沉淀与实战心得。</p>
+                        <p>职业履历丰富且亮眼，曾先后担任快手数据库管控研发工程师、腾讯云数据库架构师及公有云 Redis 运维工程师，凭借过硬的专业能力，被聘为Redis 中国用户组特聘顾问。在职业生涯中，成功服务于快手、腾讯、唯品会、大疆、平安等多家行业标杆企业，为众多核心业务保驾护航 —— 无论是支撑快手短视频的高并发数据需求，还是保障 QQ、腾讯云等亿级用户规模业务的稳定运行，均能提供稳定高效的数据库解决方案与管控体系，为业务的顺畅运转筑牢数据根基。</p>
+                        <p>在技术实践中，始终以 "可视化、标准化、流程化、自动化" 为核心技术理念，主导并参与构建了多套高性能数据库运维平台。通过技术创新与落地，不仅显著提升了数据库运维效率与稳定性，更有效推动了团队技术能力升级与整体效能提升，在技术赋能业务发展的道路上持续贡献力量。</p>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">13+</div>
+                            <div class="stat-label">年工作经验</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">成功项目</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">99.9%</div>
+                            <div class="stat-label">系统可用性</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">技术支持</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="profile-card">
+                        <div class="profile-avatar">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="profile-info">
+                            <h4>数据库专家</h4>
+                            <p>OKX DBA负责人</p>
+                            <div class="profile-tags">
+                                <span class="tag">MySQL</span>
+                                <span class="tag">PostgreSQL</span>
+                                <span class="tag">Redis</span>
+                                <span class="tag">MongoDB</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 项目展示部分 -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">项目经历</h2>
+                <p class="section-subtitle">核心项目与成就</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card" data-category="database">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="project-badge">核心项目</div>
+                    </div>
+                    <h3>OKX交易系统数据库优化</h3>
+                    <p>负责OKX交易所核心交易系统的数据库架构设计与性能优化，实现99.99%的高可用性，处理峰值TPS超过100万。</p>
+                    <div class="project-tech">
+                        <span>MySQL</span>
+                        <span>Redis</span>
+                        <span>分库分表</span>
+                        <span>读写分离</span>
+                    </div>
+                    <div class="project-stats">
+                        <div class="stat">
+                            <span class="stat-value">99.99%</span>
+                            <span class="stat-label">可用性</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">1M+</span>
+                            <span class="stat-label">TPS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="architecture">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-sitemap"></i>
+                        </div>
+                        <div class="project-badge">架构设计</div>
+                    </div>
+                    <h3>分布式数据库集群架构</h3>
+                    <p>设计并实施企业级分布式数据库集群，支持水平扩展，实现数据一致性保障和故障自动切换。</p>
+                    <div class="project-tech">
+                        <span>MySQL Cluster</span>
+                        <span>ProxySQL</span>
+                        <span>MHA</span>
+                        <span>监控告警</span>
+                    </div>
+                    <div class="project-stats">
+                        <div class="stat">
+                            <span class="stat-value">5+</span>
+                            <span class="stat-label">节点集群</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">自动</span>
+                            <span class="stat-label">故障切换</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="performance">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <div class="project-badge">性能优化</div>
+                    </div>
+                    <h3>数据库性能调优项目</h3>
+                    <p>针对高并发场景进行深度性能调优，通过索引优化、查询重写、参数调优等手段，将查询性能提升300%。</p>
+                    <div class="project-tech">
+                        <span>慢查询分析</span>
+                        <span>索引优化</span>
+                        <span>参数调优</span>
+                        <span>缓存策略</span>
+                    </div>
+                    <div class="project-stats">
+                        <div class="stat">
+                            <span class="stat-value">300%</span>
+                            <span class="stat-label">性能提升</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">50ms</span>
+                            <span class="stat-label">平均响应</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="security">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="project-badge">数据安全</div>
+                    </div>
+                    <h3>数据安全与备份策略</h3>
+                    <p>建立完善的数据安全体系，包括数据加密、访问控制、审计日志和灾难恢复方案，确保数据安全合规。</p>
+                    <div class="project-tech">
+                        <span>数据加密</span>
+                        <span>访问控制</span>
+                        <span>审计日志</span>
+                        <span>灾难恢复</span>
+                    </div>
+                    <div class="project-stats">
+                        <div class="stat">
+                            <span class="stat-value">100%</span>
+                            <span class="stat-label">数据加密</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value">RTO<1h</span>
+                            <span class="stat-label">恢复时间</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技能部分 -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">技术栈</h2>
+                <p class="section-subtitle">数据库技术与专业技能</p>
+            </div>
+            <div class="skills-content">
+                <div class="skills-category">
+                    <h3><i class="fas fa-database"></i> 数据库技术</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-mysql"></i>
+                            </div>
+                            <div class="skill-info">
+                                <h4>MySQL</h4>
+                                <div class="skill-level">
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="95%"></div>
+                                    </div>
+                                    <span>95%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-elephant"></i>
+                            </div>
+                            <div class="skill-info">
+                                <h4>PostgreSQL</h4>
+                                <div class="skill-level">
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="90%"></div>
+                                    </div>
+                                    <span>90%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-memory"></i>
+                            </div>
+                            <div class="skill-info">
+                                <h4>Redis</h4>
+                                <div class="skill-level">
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="88%"></div>
+                                    </div>
+                                    <span>88%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <div class="skill-info">
+                                <h4>MongoDB</h4>
+                                <div class="skill-level">
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="85%"></div>
+                                    </div>
+                                    <span>85%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h3><i class="fas fa-tools"></i> 运维工具</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <div class="skill-info">
+                                <h4>Docker</h4>
+                                <div class="skill-level">
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="92%"></div>
+                                    </div>
+                                    <span>92%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-kubernetes"></i>
+                            </div>
+                            <div class="skill-info">
+                                <h4>Kubernetes</h4>
+                                <div class="skill-level">
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="87%"></div>
+                                    </div>
+                                    <span>87%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <div class="skill-info">
+                                <h4>Prometheus</h4>
+                                <div class="skill-level">
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="90%"></div>
+                                    </div>
+                                    <span>90%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-terminal"></i>
+                            </div>
+                            <div class="skill-info">
+                                <h4>Shell/Python</h4>
+                                <div class="skill-level">
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="93%"></div>
+                                    </div>
+                                    <span>93%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 求职意向部分 -->
+    <section id="intention" class="job-intention">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">求职意向</h2>
+                <p class="section-subtitle">目标职位与期望</p>
+            </div>
+            <div class="intention-content">
+                <div class="intention-card">
+                    <div class="intention-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>目标职位</h3>
+                    <div class="position-info">
+                        <div class="company-logo">
+                            <span>OKX</span>
+                        </div>
+                        <div class="position-details">
+                            <h4>DBA负责人</h4>
+                            <p>数据库架构师 & 团队管理</p>
+                        </div>
+                    </div>
+                    <div class="intention-highlights">
+                        <div class="highlight-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>13年数据库实战经验</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>顶级互联网公司背景</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Redis中国用户组特聘顾问</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>金融级数据库架构经验</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 业务范围脑图部分 -->
+    <section id="business-scope" class="business-scope">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">交易所DBA负责人业务范围</h2>
+                <p class="section-subtitle">全面的数据库支持与管理体系</p>
+            </div>
+            <div class="mindmap-container">
+                <div id="myDiagramDiv" class="mindmap-diagram"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OKX职责部分 -->
+    <section id="okx" class="okx-duties">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">OKX DBA负责人职责</h2>
+                <p class="section-subtitle">在OKX交易所的核心职责与工作内容</p>
+            </div>
+            <div class="duties-content">
+                <div class="duties-overview">
+                    <div class="overview-card">
+                        <div class="overview-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h3>DBA团队负责人</h3>
+                        <p>负责OKX交易所数据库团队的管理与协调，确保核心交易系统的稳定运行</p>
+                    </div>
+                </div>
+                
+                <div class="duties-grid">
+                    <div class="duty-card">
+                        <div class="duty-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>系统稳定性保障</h4>
+                        <ul>
+                            <li>7x24小时监控核心数据库系统</li>
+                            <li>建立完善的故障预警机制</li>
+                            <li>制定应急响应预案</li>
+                            <li>确保99.99%的系统可用性</li>
+                        </ul>
+                    </div>
+
+                    <div class="duty-card">
+                        <div class="duty-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4>性能优化管理</h4>
+                        <ul>
+                            <li>持续监控数据库性能指标</li>
+                            <li>优化慢查询和瓶颈问题</li>
+                            <li>实施数据库分库分表策略</li>
+                            <li>提升系统整体吞吐量</li>
+                        </ul>
+                    </div>
+
+                    <div class="duty-card">
+                        <div class="duty-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4>团队管理协调</h4>
+                        <ul>
+                            <li>管理DBA团队日常工作</li>
+                            <li>制定技术规范和最佳实践</li>
+                            <li>组织技术培训和知识分享</li>
+                            <li>跨部门协作与沟通</li>
+                        </ul>
+                    </div>
+
+                    <div class="duty-card">
+                        <div class="duty-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h4>数据安全合规</h4>
+                        <ul>
+                            <li>建立数据安全防护体系</li>
+                            <li>实施数据加密和访问控制</li>
+                            <li>确保合规性审计要求</li>
+                            <li>制定数据备份恢复策略</li>
+                        </ul>
+                    </div>
+
+                    <div class="duty-card">
+                        <div class="duty-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h4>架构设计规划</h4>
+                        <ul>
+                            <li>设计高可用数据库架构</li>
+                            <li>规划系统容量和扩展方案</li>
+                            <li>评估新技术和工具</li>
+                            <li>制定技术发展路线图</li>
+                        </ul>
+                    </div>
+
+                    <div class="duty-card">
+                        <div class="duty-icon">
+                            <i class="fas fa-bug"></i>
+                        </div>
+                        <h4>故障处理响应</h4>
+                        <ul>
+                            <li>快速响应生产环境故障</li>
+                            <li>分析故障根因并制定解决方案</li>
+                            <li>建立故障复盘和改进机制</li>
+                            <li>预防类似问题再次发生</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>联系方式</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> varian.feng@gmail.com</p>
+                        <p><i class="fas fa-phone"></i> +86-13763319074</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 深圳-中国</p>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>专业领域</h4>
+                    <div class="expertise-tags">
+                        <span>数据库架构</span>
+                        <span>性能优化</span>
+                        <span>高可用设计</span>
+                        <span>团队管理</span>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>关注我</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 个人经历展示. 用心打造的专业简历.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
