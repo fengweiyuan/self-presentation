@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gojs/2.3.16/go.js"></script>
 </head>
@@ -27,16 +26,20 @@
                 <li><a href="#skills" class="nav-link">技能</a></li>
                 <li><a href="#intention" class="nav-link">求职意向</a></li>
                 <li><a href="#okx" class="nav-link">OKX职责</a></li>
+                <li><a href="#career-highlights" class="nav-link">职业亮点</a></li>
+                <li><a href="#certifications" class="nav-link">资质认证</a></li>
                 <li><a href="#personal-info" class="nav-link">个人信息</a></li>
-                <li><button id="exportPdfBtn" class="nav-link pdf-btn">
-                    <i class="fas fa-file-pdf"></i>
-                    导出PDF
-                </button></li>
             </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="nav-actions">
+                <button class="export-png-btn" onclick="exportToPNG()" title="导出PNG截图">
+                    <i class="fas fa-download"></i>
+                    <span>导出PNG</span>
+                </button>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
     </nav>
@@ -55,11 +58,11 @@
         <div class="hero-content">
             <div class="hero-text">
                 <h1 class="hero-title">
-                    <span class="title-line">数据库架构师</span>
+                    <span class="title-line">数据库平台工程师</span>
                     <span class="title-line">与</span>
                     <span class="title-line highlight">DBA专家</span>
                 </h1>
-                <p class="hero-subtitle">十三年金融制造互联网DBA经验，腾讯快手数据库平台建设专家</p>
+                <p class="hero-subtitle">13年金融、制造、互联网 DBA 经验，数据库平台建设，数据库架构，运维专家</p>
                 <div class="hero-buttons">
                     <button class="btn btn-primary" onclick="scrollToSection('about')">
                         <i class="fas fa-user"></i>
@@ -1217,6 +1220,174 @@
         </div>
     </section>
 
+    <!-- 职业生涯亮点部分 -->
+    <section id="career-highlights" class="career-highlights">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">技术贡献与行业影响力</h2>
+                <p class="section-subtitle">职业生涯亮点与专业成就</p>
+            </div>
+            <div class="highlights-content">
+                <div class="highlights-list">
+                    <div class="highlight-item">
+                        <div class="highlight-badge">2018</div>
+                        <div class="highlight-content">
+                            <h4>第九届中国数据库技术大会 特邀分享嘉宾</h4>
+                            <p>作为特邀分享嘉宾参与第九届中国数据库技术大会，分享数据库技术实践经验</p>
+                            <a href="https://dtcc.it168.com/2018/yicheng.html" target="_blank" class="highlight-link">
+                                <i class="fas fa-external-link-alt"></i> 查看详情
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="highlight-item">
+                        <div class="highlight-badge">2019</div>
+                        <div class="highlight-content">
+                            <h4>Redis 源码贡献者</h4>
+                            <p>作为Redis开源项目的源码贡献者，参与核心功能开发与优化，为Redis社区发展贡献力量</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-item">
+                        <div class="highlight-badge">2019</div>
+                        <div class="highlight-content">
+                            <h4>"数据英雄 2018" 快问快答嘉宾</h4>
+                            <p>参与"数据英雄 2018"活动，作为快问快答嘉宾分享数据库领域见解</p>
+                            <a href="http://www.itpub.net/thread-2101001-1-1.html" target="_blank" class="highlight-link">
+                                <i class="fas fa-external-link-alt"></i> 查看详情
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="highlight-item">
+                        <div class="highlight-badge">2020</div>
+                        <div class="highlight-content">
+                            <h4>社区技术分享</h4>
+                            <p>《如何运营亿级 QPS 的 Redis 系统》（知乎云+社区，2018.06）、《5 分钟学会这种更高效的 Redis 数据删除方式》（腾讯云+社区，2020.02）</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-item">
+                        <div class="highlight-badge">2021</div>
+                        <div class="highlight-content">
+                            <h4>Redis 中国用户组主席团成员（特聘顾问）</h4>
+                            <p>受邀担任Redis中国用户组主席团成员，作为特聘顾问参与技术决策与社区建设</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 图片展示部分 -->
+                <div class="highlights-gallery">
+                    <h3 class="gallery-title">相关证书与证明</h3>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <div class="gallery-image">
+                                <img src="info.png" alt="数据库技术大会分享证明" class="gallery-img">
+                            </div>
+                            <div class="gallery-caption">
+                                <h4>数据库技术大会</h4>
+                                <p>第九届中国数据库技术大会特邀分享嘉宾证明</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="gallery-image">
+                                <img src="ocp.png" alt="OCP认证证书" class="gallery-img">
+                            </div>
+                            <div class="gallery-caption">
+                                <h4>OCP认证</h4>
+                                <p>Oracle Certified Professional认证证书</p>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="gallery-image">
+                                <img src="redis-group.png" alt="Redis中国用户组证明" class="gallery-img">
+                            </div>
+                            <div class="gallery-caption">
+                                <h4>Redis中国用户组</h4>
+                                <p>Redis中国用户组主席团成员特聘顾问证明</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 资质认证部分 -->
+    <section id="certifications" class="certifications">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">资质认证</h2>
+                <p class="section-subtitle">专业认证与技能资质</p>
+            </div>
+            <div class="certifications-content">
+                <div class="certifications-table">
+                    <div class="table-header">
+                        <div class="table-cell">认证名称</div>
+                        <div class="table-cell">认证时间</div>
+                        <div class="table-cell">认证等级 / 意义</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-cell">
+                            <div class="cert-name">
+                                <i class="fas fa-network-wired"></i>
+                                <span>中国网络工程师</span>
+                            </div>
+                        </div>
+                        <div class="table-cell">
+                            <div class="cert-date">2010.10</div>
+                        </div>
+                        <div class="table-cell">
+                            <div class="cert-desc">网络技术与运维能力认证</div>
+                        </div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-cell">
+                            <div class="cert-name">
+                                <i class="fas fa-project-diagram"></i>
+                                <span>信息系统项目管理师</span>
+                            </div>
+                        </div>
+                        <div class="table-cell">
+                            <div class="cert-date">2011.05</div>
+                        </div>
+                        <div class="table-cell">
+                            <div class="cert-desc">国家副高职称，项目管理能力认证</div>
+                        </div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-cell">
+                            <div class="cert-name">
+                                <i class="fas fa-database"></i>
+                                <span>Oracle OCP 数据库专家</span>
+                            </div>
+                        </div>
+                        <div class="table-cell">
+                            <div class="cert-date">2011.09</div>
+                        </div>
+                        <div class="table-cell">
+                            <div class="cert-desc">Oracle 官方高级数据库认证</div>
+                        </div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-cell">
+                            <div class="cert-name">
+                                <i class="fab fa-redhat"></i>
+                                <span>RHCE 红帽认证工程师</span>
+                            </div>
+                        </div>
+                        <div class="table-cell">
+                            <div class="cert-date">2011.10</div>
+                        </div>
+                        <div class="table-cell">
+                            <div class="cert-desc">红帽 Linux 系统运维高级认证</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 个人信息部分 -->
     <section id="personal-info" class="personal-info">
         <div class="container">
@@ -1225,111 +1396,41 @@
                 <p class="section-subtitle">个人基本信息与联系方式</p>
             </div>
             <div class="personal-info-content">
-                <div class="info-card">
-                    <div class="info-header">
-                        <div class="info-icon">
-                            <i class="fas fa-user-circle"></i>
+                <div class="info-compact-grid">
+                    <div class="info-compact-item">
+                        <div class="info-compact-icon">
+                            <i class="fas fa-user"></i>
                         </div>
-                        <h3>基本信息</h3>
+                        <div class="info-compact-content">
+                            <h4>冯伟源</h4>
+                            <p>男 · 1988年05月 · 已婚</p>
+                        </div>
                     </div>
-                    <div class="info-grid">
-                        <div class="info-row">
-                            <div class="info-item">
-                                <div class="info-label">
-                                    <i class="fas fa-id-card"></i>
-                                    <span>姓名</span>
-                                </div>
-                                <div class="info-value">冯伟源</div>
-                            </div>
-                            <div class="info-item">
-                                <div class="info-label">
-                                    <i class="fas fa-venus-mars"></i>
-                                    <span>性别</span>
-                                </div>
-                                <div class="info-value">男</div>
-                            </div>
+                    <div class="info-compact-item">
+                        <div class="info-compact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
                         </div>
-                        <div class="info-row">
-                            <div class="info-item">
-                                <div class="info-label">
-                                    <i class="fas fa-birthday-cake"></i>
-                                    <span>出生年月</span>
-                                </div>
-                                <div class="info-value">1988年05月</div>
-                            </div>
-                            <div class="info-item">
-                                <div class="info-label">
-                                    <i class="fas fa-heart"></i>
-                                    <span>婚姻状况</span>
-                                </div>
-                                <div class="info-value">已婚</div>
-                            </div>
+                        <div class="info-compact-content">
+                            <h4>深圳 · 中国</h4>
+                            <p>华南农业大学-计算机系 · 本科</p>
                         </div>
-                        <div class="info-row">
-                            <div class="info-item">
-                                <div class="info-label">
-                                    <i class="fas fa-flag"></i>
-                                    <span>国籍</span>
-                                </div>
-                                <div class="info-value">中国</div>
-                            </div>
-                            <div class="info-item">
-                                <div class="info-label">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    <span>居住地</span>
-                                </div>
-                                <div class="info-value">深圳</div>
-                            </div>
+                    </div>
+                    <div class="info-compact-item">
+                        <div class="info-compact-icon">
+                            <i class="fas fa-phone"></i>
                         </div>
-                        <div class="info-row">
-                            <div class="info-item">
-                                <div class="info-label">
-                                    <i class="fas fa-phone"></i>
-                                    <span>联系电话</span>
-                                </div>
-                                <div class="info-value">13763319074</div>
-                            </div>
-                            <div class="info-item">
-                                <div class="info-label">
-                                    <i class="fas fa-envelope"></i>
-                                    <span>电子邮箱</span>
-                                </div>
-                                <div class="info-value">107639177@qq.com</div>
-                            </div>
+                        <div class="info-compact-content">
+                            <h4>+86-13763319074</h4>
+                            <p>107639177@qq.com</p>
                         </div>
-                        <div class="info-row">
-                            <div class="info-item">
-                                <div class="info-label">
-                                    <i class="fab fa-weixin"></i>
-                                    <span>微信</span>
-                                </div>
-                                <div class="info-value">aaa777357</div>
-                            </div>
-                            <div class="info-item">
-                                <div class="info-label">
-                                    <i class="fas fa-briefcase"></i>
-                                    <span>在职状态</span>
-                                </div>
-                                <div class="info-value">否</div>
-                            </div>
+                    </div>
+                    <div class="info-compact-item">
+                        <div class="info-compact-icon">
+                            <i class="fab fa-weixin"></i>
                         </div>
-                        <div class="info-row">
-                            <div class="info-item full-width">
-                                <div class="info-label">
-                                    <i class="fas fa-graduation-cap"></i>
-                                    <span>毕业院校</span>
-                                </div>
-                                <div class="info-value">华南农业大学-计算机系</div>
-                            </div>
-                        </div>
-                        <div class="info-row">
-                            <div class="info-item full-width">
-                                <div class="info-label">
-                                    <i class="fas fa-certificate"></i>
-                                    <span>学历</span>
-                                </div>
-                                <div class="info-value">本科</div>
-                            </div>
+                        <div class="info-compact-content">
+                            <h4>aaa777357</h4>
+                            <p>github.com/fengweiyuan</p>
                         </div>
                     </div>
                 </div>
@@ -1353,8 +1454,11 @@
                     <h4>专业领域</h4>
                     <div class="expertise-tags">
                         <span>数据库架构</span>
+                        <span>运维平台</span>
                         <span>性能优化</span>
-                        <span>高可用设计</span>
+                        <span>高可用</span>
+                        <span>Finops</span>
+                        <span>项目管理</span>
                         <span>团队管理</span>
                     </div>
                 </div>

@@ -7,8 +7,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeTypingEffect();
     initializeCounters();
     initializeParallax();
-    initializePdfExport();
-    initializeDatabaseIconClick();
     
     // 延迟初始化数据库脑图
     setTimeout(initializeDatabaseMindMap, 1000);
@@ -535,319 +533,141 @@ window.addEventListener('scroll', throttle(function() {
     // 滚动相关的性能敏感操作
 }, 16)); // 约60fps
 
-// PDF导出功能
-function initializePdfExport() {
-    const exportBtn = document.getElementById('exportPdfBtn');
+// PNG导出功能
+function exportToPNG() {
+    // 显示加载提示
+    showLoadingMessage('正在生成PNG截图...');
     
-    if (exportBtn) {
-        exportBtn.addEventListener('click', function() {
-            exportToPdf();
-        });
-    }
-}
-
-function exportToPdf() {
-    // 显示加载状态
-    const originalText = document.getElementById('exportPdfBtn').innerHTML;
-    document.getElementById('exportPdfBtn').innerHTML = '<i class="fas fa-spinner fa-spin"></i> 生成中...';
-    document.getElementById('exportPdfBtn').disabled = true;
+    // 隐藏导航栏，避免在截图中显示
+    const navbar = document.querySelector('.navbar');
+    const originalNavbarDisplay = navbar.style.display;
+    navbar.style.display = 'none';
     
-    // 创建PDF内容
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF('p', 'mm', 'a4');
-    
-    // 设置字体
-    doc.setFont('helvetica');
-    
-    // 页面设置
-    const pageWidth = doc.internal.pageSize.getWidth();
-    const pageHeight = doc.internal.pageSize.getHeight();
-    const margin = 20;
-    let yPosition = margin;
-    
-    // 添加标题
-    doc.setFontSize(24);
-    doc.setTextColor(37, 99, 235); // 蓝色
-    doc.text('个人简历 - 数据库专家', pageWidth / 2, yPosition, { align: 'center' });
-    yPosition += 15;
-    
-    // 添加副标题
-    doc.setFontSize(14);
-    doc.setTextColor(100, 100, 100);
-    doc.text('OKX交易所 DBA负责人', pageWidth / 2, yPosition, { align: 'center' });
-    yPosition += 20;
-    
-    // 添加分隔线
-    doc.setDrawColor(37, 99, 235);
-    doc.setLineWidth(0.5);
-    doc.line(margin, yPosition, pageWidth - margin, yPosition);
-    yPosition += 10;
-    
-    // 联系方式
-    doc.setFontSize(12);
-    doc.setTextColor(0, 0, 0);
-    doc.text('联系方式', margin, yPosition);
-    yPosition += 8;
-    
-    doc.setFontSize(10);
-    doc.text('邮箱: varian.feng@gmail.com', margin, yPosition);
-    yPosition += 5;
-    doc.text('电话: +86-13763319074', margin, yPosition);
-    yPosition += 5;
-    doc.text('地址: 深圳-中国', margin, yPosition);
-    yPosition += 15;
-    
-    // 个人简介
-    doc.setFontSize(12);
-    doc.setTextColor(0, 0, 0);
-    doc.text('个人简介', margin, yPosition);
-    yPosition += 8;
-    
-    doc.setFontSize(10);
-    const introText = '拥有十三年数据库管理与架构实战经验，并深耕数据库运维平台设计开发领域，尤其在分布式 NoSQL 集群运维与数据库架构设计方向积累了深厚的技术沉淀与实战心得。曾先后担任快手数据库管控研发工程师、腾讯云数据库架构师及公有云 Redis 运维工程师，被聘为Redis 中国用户组特聘顾问。成功服务于快手、腾讯、唯品会、大疆、平安等多家行业标杆企业，为众多核心业务保驾护航。';
-    const introLines = doc.splitTextToSize(introText, pageWidth - 2 * margin);
-    doc.text(introLines, margin, yPosition);
-    yPosition += introLines.length * 5 + 10;
-    
-    // 核心技能
-    doc.setFontSize(12);
-    doc.text('核心技能', margin, yPosition);
-    yPosition += 8;
-    
-    doc.setFontSize(10);
-    const skills = [
-        'MySQL (95%)',
-        'PostgreSQL (90%)',
-        'Redis (88%)',
-        'MongoDB (85%)',
-        'Docker (92%)',
-        'Kubernetes (87%)',
-        'Prometheus (90%)',
-        'Shell/Python (93%)'
-    ];
-    
-    skills.forEach(skill => {
-        doc.text('• ' + skill, margin, yPosition);
-        yPosition += 5;
-    });
-    yPosition += 10;
-    
-    // 项目经历
-    doc.setFontSize(12);
-    doc.text('项目经历', margin, yPosition);
-    yPosition += 8;
-    
-    const projects = [
-        {
-            title: 'OKX交易系统数据库优化',
-            desc: '负责OKX交易所核心交易系统的数据库架构设计与性能优化，实现99.99%的高可用性，处理峰值TPS超过100万。',
-            tech: 'MySQL, Redis, 分库分表, 读写分离'
-        },
-        {
-            title: '分布式数据库集群架构',
-            desc: '设计并实施企业级分布式数据库集群，支持水平扩展，实现数据一致性保障和故障自动切换。',
-            tech: 'MySQL Cluster, ProxySQL, MHA, 监控告警'
-        },
-        {
-            title: '数据库性能调优项目',
-            desc: '针对高并发场景进行深度性能调优，通过索引优化、查询重写、参数调优等手段，将查询性能提升300%。',
-            tech: '慢查询分析, 索引优化, 参数调优, 缓存策略'
-        },
-        {
-            title: '数据安全与备份策略',
-            desc: '建立完善的数据安全体系，包括数据加密、访问控制、审计日志和灾难恢复方案，确保数据安全合规。',
-            tech: '数据加密, 访问控制, 审计日志, 灾难恢复'
-        }
-    ];
-    
-    projects.forEach((project, index) => {
-        if (yPosition > pageHeight - 40) {
-            doc.addPage();
-            yPosition = margin;
+    // 为截图优化添加特殊样式
+    const screenshotOptimizedStyle = document.createElement('style');
+    screenshotOptimizedStyle.id = 'screenshot-optimized-style';
+    screenshotOptimizedStyle.textContent = `
+        /* 截图优化样式 */
+        .hero-background .floating-shapes,
+        .scroll-indicator,
+        .mindmap-controls,
+        .control-btn {
+            display: none !important;
         }
         
-        doc.setFontSize(11);
-        doc.setTextColor(37, 99, 235);
-        doc.text(`${index + 1}. ${project.title}`, margin, yPosition);
-        yPosition += 6;
-        
-        doc.setFontSize(9);
-        doc.setTextColor(0, 0, 0);
-        const descLines = doc.splitTextToSize(project.desc, pageWidth - 2 * margin);
-        doc.text(descLines, margin, yPosition);
-        yPosition += descLines.length * 4 + 3;
-        
-        doc.setFontSize(8);
-        doc.setTextColor(100, 100, 100);
-        doc.text(`技术栈: ${project.tech}`, margin, yPosition);
-        yPosition += 8;
-    });
-    
-    // OKX职责
-    if (yPosition > pageHeight - 60) {
-        doc.addPage();
-        yPosition = margin;
-    }
-    
-    doc.setFontSize(12);
-    doc.setTextColor(0, 0, 0);
-    doc.text('OKX DBA负责人职责', margin, yPosition);
-    yPosition += 8;
-    
-    const duties = [
-        '系统稳定性保障 - 7x24小时监控核心数据库系统，建立完善的故障预警机制',
-        '性能优化管理 - 持续监控数据库性能指标，优化慢查询和瓶颈问题',
-        '团队管理协调 - 管理DBA团队日常工作，制定技术规范和最佳实践',
-        '数据安全合规 - 建立数据安全防护体系，实施数据加密和访问控制',
-        '架构设计规划 - 设计高可用数据库架构，规划系统容量和扩展方案',
-        '故障处理响应 - 快速响应生产环境故障，分析故障根因并制定解决方案'
-    ];
-    
-    doc.setFontSize(9);
-    duties.forEach(duty => {
-        if (yPosition > pageHeight - 20) {
-            doc.addPage();
-            yPosition = margin;
+        /* 简化动画效果 */
+        * {
+            animation: none !important;
+            transition: none !important;
         }
-        doc.text('• ' + duty, margin, yPosition);
-        yPosition += 5;
-    });
-    
-    // 核心成就
-    yPosition += 10;
-    if (yPosition > pageHeight - 40) {
-        doc.addPage();
-        yPosition = margin;
-    }
-    
-    doc.setFontSize(12);
-    doc.text('核心成就', margin, yPosition);
-    yPosition += 8;
-    
-    const achievements = [
-        '实现99.99%的系统可用性，远超行业标准',
-        '优化交易系统性能，支持百万级TPS',
-        '建立完善的监控告警体系，故障响应时间<5分钟',
-        '成功管理15+人的DBA团队，提升团队效率30%'
-    ];
-    
-    doc.setFontSize(9);
-    achievements.forEach(achievement => {
-        doc.text('✓ ' + achievement, margin, yPosition);
-        yPosition += 5;
-    });
-    
-    // 保存PDF
-    doc.save('个人简历-数据库专家.pdf');
-    
-    // 恢复按钮状态
-    document.getElementById('exportPdfBtn').innerHTML = originalText;
-    document.getElementById('exportPdfBtn').disabled = false;
-}
-
-// 数据库图标双击功能
-function initializeDatabaseIconClick() {
-    const databaseIcon = document.querySelector('.nav-logo i');
-    const pdfBtn = document.getElementById('exportPdfBtn');
-    
-    let clickCount = 0;
-    let clickTimeout;
-    const requiredClicks = 2; // 改为双击
-    const resetTime = 500; // 双击时间间隔500ms
-    
-    if (databaseIcon && pdfBtn) {
-        databaseIcon.addEventListener('click', function() {
-            clickCount++;
-            
-            // 添加点击动画效果
-            this.classList.add('clicked');
-            setTimeout(() => {
-                this.classList.remove('clicked');
-            }, 300);
-            
-            // 清除之前的重置定时器
-            clearTimeout(clickTimeout);
-            
-            // 如果达到要求的点击次数
-            if (clickCount >= requiredClicks) {
-                // 显示PDF按钮
-                pdfBtn.classList.add('show');
-                
-                // 添加成功提示
-                showClickSuccessMessage();
-                
-                // 重置计数
-                clickCount = 0;
-            } else {
-                // 设置重置定时器
-                clickTimeout = setTimeout(() => {
-                    clickCount = 0;
-                }, resetTime);
-            }
-        });
-    }
-}
-
-// 显示点击成功提示
-function showClickSuccessMessage() {
-    // 创建提示消息
-    const message = document.createElement('div');
-    message.textContent = 'PDF导出功能已激活！';
-    message.style.cssText = `
-        position: fixed;
-        top: 100px;
-        right: 20px;
-        background: linear-gradient(45deg, #007aff, #00d4ff);
-        color: white;
-        padding: 12px 20px;
-        border-radius: 25px;
-        font-weight: 600;
-        font-size: 14px;
-        z-index: 10000;
-        box-shadow: 0 10px 30px rgba(0, 122, 255, 0.3);
-        animation: slideInRight 0.5s ease forwards;
-        user-select: none;
-    `;
-    
-    // 添加动画样式
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(100px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        
+        /* 确保文字清晰 */
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-        @keyframes slideOutRight {
-            from {
-                opacity: 1;
-                transform: translateX(0);
-            }
-            to {
-                opacity: 0;
-                transform: translateX(100px);
-            }
+        
+        /* 优化背景 */
+        .hero {
+            background: #0f1419 !important;
         }
     `;
-    document.head.appendChild(style);
+    document.head.appendChild(screenshotOptimizedStyle);
     
-    // 添加到页面
-    document.body.appendChild(message);
-    
-    // 3秒后自动移除
+    // 等待样式应用
     setTimeout(() => {
-        message.style.animation = 'slideOutRight 0.5s ease forwards';
-        setTimeout(() => {
-            if (message.parentNode) {
-                message.parentNode.removeChild(message);
+        // 使用html2canvas截取页面内容
+        html2canvas(document.body, {
+            scale: 2, // 提高清晰度
+            useCORS: true,
+            allowTaint: true,
+            backgroundColor: '#ffffff',
+            width: window.innerWidth,
+            height: document.body.scrollHeight,
+            scrollX: 0,
+            scrollY: 0,
+            logging: false // 关闭日志
+        }).then(canvas => {
+            // 恢复导航栏显示
+            navbar.style.display = originalNavbarDisplay;
+            
+            // 移除截图优化样式
+            const screenshotStyle = document.getElementById('screenshot-optimized-style');
+            if (screenshotStyle) {
+                screenshotStyle.remove();
             }
-        }, 500);
-    }, 3000);
+            
+            // 创建下载链接
+            const link = document.createElement('a');
+            link.download = '个人简历-数据库专家.png';
+            link.href = canvas.toDataURL('image/png', 1.0);
+            
+            // 触发下载
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // 隐藏加载提示
+            hideLoadingMessage();
+            
+        }).catch(error => {
+            console.error('PNG生成失败:', error);
+            
+            // 恢复导航栏显示
+            navbar.style.display = originalNavbarDisplay;
+            
+            // 移除截图优化样式
+            const screenshotStyle = document.getElementById('screenshot-optimized-style');
+            if (screenshotStyle) {
+                screenshotStyle.remove();
+            }
+            
+            // 隐藏加载提示
+            hideLoadingMessage();
+            
+            alert('PNG生成失败，请重试。如果问题持续存在，请尝试刷新页面后再次导出。');
+        });
+    }, 300); // 等待300ms确保样式应用
 }
+
+// 显示加载消息
+function showLoadingMessage(message) {
+    const loadingDiv = document.createElement('div');
+    loadingDiv.id = 'png-loading';
+    loadingDiv.innerHTML = `
+        <div style="
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(15, 20, 25, 0.95);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            border: 1px solid #2a3441;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+        ">
+            <i class="fas fa-spinner fa-spin"></i>
+            <span>${message}</span>
+        </div>
+    `;
+    document.body.appendChild(loadingDiv);
+}
+
+// 隐藏加载消息
+function hideLoadingMessage() {
+    const loadingDiv = document.getElementById('png-loading');
+    if (loadingDiv) {
+        loadingDiv.remove();
+    }
+}
+
 
 // 初始化数据库脑图
 function initializeDatabaseMindMap() {
