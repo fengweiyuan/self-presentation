@@ -722,3 +722,39 @@ function updateActiveNavLink() {
         }
     });
 }
+
+// 图片放大功能
+function openImageModal(img) {
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    
+    // 获取图片信息
+    const src = img.src;
+    const alt = img.alt;
+    
+    // 设置模态框内容
+    modalImage.src = src;
+    modalImage.alt = alt;
+    
+    // 显示模态框
+    modal.classList.add('show');
+    document.body.style.overflow = 'hidden'; // 防止背景滚动
+    
+    // 添加ESC键监听
+    document.addEventListener('keydown', handleEscapeKey);
+}
+
+function closeImageModal() {
+    const modal = document.getElementById('imageModal');
+    modal.classList.remove('show');
+    document.body.style.overflow = 'auto'; // 恢复滚动
+    
+    // 移除ESC键监听
+    document.removeEventListener('keydown', handleEscapeKey);
+}
+
+function handleEscapeKey(event) {
+    if (event.key === 'Escape') {
+        closeImageModal();
+    }
+}
