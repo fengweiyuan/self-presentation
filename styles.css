@@ -2782,3 +2782,247 @@ section {
         gap: 8px;
     }
 }
+
+/* 加密货币交易所架构图样式 */
+.crypto-architecture {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.crypto-architecture::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.crypto-architecture .section-header {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.crypto-architecture .section-title {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.crypto-architecture .section-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.2rem;
+}
+
+.architecture-content {
+    position: relative;
+    z-index: 2;
+}
+
+.architecture-diagram {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.architecture-layer {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.architecture-layer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.architecture-layer:hover::before {
+    left: 100%;
+}
+
+.architecture-layer:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.core-layer {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 140, 0, 0.2));
+    border: 2px solid rgba(255, 215, 0, 0.5);
+}
+
+.core-layer:hover {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(255, 140, 0, 0.3));
+}
+
+.layer-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.layer-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.layer-header h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: white;
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.tech-tag {
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.tech-tag.react { background: linear-gradient(135deg, #61dafb, #21232a); color: white; }
+.tech-tag.vue { background: linear-gradient(135deg, #4fc08d, #2c3e50); color: white; }
+.tech-tag.typescript { background: linear-gradient(135deg, #3178c6, #235a97); color: white; }
+.tech-tag.nodejs { background: linear-gradient(135deg, #68a063, #3c5d3a); color: white; }
+.tech-tag.go { background: linear-gradient(135deg, #00add8, #007d9c); color: white; }
+.tech-tag.java { background: linear-gradient(135deg, #ed8b00, #b8690a); color: white; }
+.tech-tag.kotlin { background: linear-gradient(135deg, #7f52ff, #6238cc); color: white; }
+.tech-tag.cpp { background: linear-gradient(135deg, #00599c, #004482); color: white; }
+.tech-tag.rust { background: linear-gradient(135deg, #ce422b, #a33625); color: white; }
+.tech-tag.python { background: linear-gradient(135deg, #3776ab, #2d5d8f); color: white; }
+.tech-tag.mysql { background: linear-gradient(135deg, #4479a1, #336688); color: white; }
+.tech-tag.postgresql { background: linear-gradient(135deg, #336791, #2d5a7b); color: white; }
+.tech-tag.clickhouse { background: linear-gradient(135deg, #ffcc02, #e6b800); color: #333; }
+.tech-tag.redis { background: linear-gradient(135deg, #dc382d, #b8302a); color: white; }
+.tech-tag.kafka { background: linear-gradient(135deg, #231f20, #1a1718); color: white; }
+.tech-tag.kubernetes { background: linear-gradient(135deg, #326ce5, #2858c4); color: white; }
+.tech-tag.docker { background: linear-gradient(135deg, #2496ed, #1e7bbf); color: white; }
+.tech-tag.nginx { background: linear-gradient(135deg, #009639, #007a2f); color: white; }
+
+.tech-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.layer-description {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.layer-description p {
+    margin-bottom: 0.5rem;
+}
+
+.highlight {
+    color: #ffd700;
+    font-weight: 600;
+}
+
+.highlight-core {
+    color: #ff6b35;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
+}
+
+.okx-highlight {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 215, 0, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    margin-top: 0.5rem;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.okx-highlight i {
+    color: #ffd700;
+}
+
+.okx-highlight span {
+    color: #ffd700;
+    font-weight: 600;
+}
+
+/* 加密货币架构图移动端适配 */
+@media (max-width: 768px) {
+    .crypto-architecture {
+        padding: 60px 0;
+    }
+    
+    .crypto-architecture .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .crypto-architecture .section-subtitle {
+        font-size: 1rem;
+    }
+    
+    .architecture-layer {
+        padding: 1.5rem;
+    }
+    
+    .layer-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+    
+    .layer-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+    
+    .layer-header h3 {
+        font-size: 1.3rem;
+    }
+    
+    .tech-stack {
+        justify-content: center;
+    }
+    
+    .tech-tag {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+}

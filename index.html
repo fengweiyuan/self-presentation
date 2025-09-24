@@ -26,6 +26,7 @@
                 <li><a href="#skills" class="nav-link">技能</a></li>
                 <li><a href="#intention" class="nav-link">意向</a></li>
                 <li><a href="#okx" class="nav-link">OKX职责</a></li>
+                <li><a href="#crypto-architecture" class="nav-link">技术架构</a></li>
                 <li><a href="#career-highlights" class="nav-link">亮点</a></li>
                 <li><a href="#certifications" class="nav-link">认证</a></li>
                 <li><a href="#personal-info" class="nav-link">个人</a></li>
@@ -1427,6 +1428,158 @@
                     </button>
                 </div>
                 <div id="myDiagramDiv" class="mindmap-diagram"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 加密货币交易所技术栈架构部分 -->
+    <section id="crypto-architecture" class="crypto-architecture">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">加密货币交易所通用分层技术栈架构</h2>
+                <p class="section-subtitle">数字货币交易所技术栈分层架构图，展示了常见的技术栈与语言选择</p>
+            </div>
+            <div class="architecture-content">
+                <div class="architecture-diagram">
+                    <div class="architecture-layer" data-layer="frontend">
+                        <div class="layer-header">
+                            <div class="layer-icon">
+                                <i class="fas fa-desktop"></i>
+                            </div>
+                            <h3>前端交互层</h3>
+                        </div>
+                        <div class="layer-content">
+                            <div class="tech-stack">
+                                <span class="tech-tag react">React</span>
+                                <span class="tech-tag vue">Vue</span>
+                                <span class="tech-tag typescript">TypeScript</span>
+                            </div>
+                            <div class="layer-description">
+                                <p>移动端: <span class="highlight">Swift / Kotlin / Flutter</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="architecture-layer" data-layer="api">
+                        <div class="layer-header">
+                            <div class="layer-icon">
+                                <i class="fas fa-plug"></i>
+                            </div>
+                            <h3>API 接入层</h3>
+                        </div>
+                        <div class="layer-content">
+                            <div class="tech-stack">
+                                <span class="tech-tag nodejs">Node.js</span>
+                                <span class="tech-tag go">Go</span>
+                            </div>
+                            <div class="layer-description">
+                                <p><span class="highlight">REST API / WebSocket</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="architecture-layer" data-layer="business">
+                        <div class="layer-header">
+                            <div class="layer-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <h3>业务逻辑层</h3>
+                        </div>
+                        <div class="layer-content">
+                            <div class="tech-stack">
+                                <span class="tech-tag java">Java</span>
+                                <span class="tech-tag kotlin">Kotlin</span>
+                            </div>
+                            <div class="layer-description">
+                                <p>负责订单、风控、清算、支付网关</p>
+                                <div class="okx-highlight">
+                                    <i class="fas fa-star"></i>
+                                    <span>数字货币交易所</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="architecture-layer core-layer" data-layer="core">
+                        <div class="layer-header">
+                            <div class="layer-icon">
+                                <i class="fas fa-microchip"></i>
+                            </div>
+                            <h3>核心撮合引擎</h3>
+                        </div>
+                        <div class="layer-content">
+                            <div class="tech-stack">
+                                <span class="tech-tag cpp">C++</span>
+                                <span class="tech-tag rust">Rust</span>
+                                <span class="tech-tag go">Go</span>
+                            </div>
+                            <div class="layer-description">
+                                <p><span class="highlight-core">高性能撮合</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="architecture-layer" data-layer="blockchain">
+                        <div class="layer-header">
+                            <div class="layer-icon">
+                                <i class="fas fa-link"></i>
+                            </div>
+                            <h3>区块链与钱包层</h3>
+                        </div>
+                        <div class="layer-content">
+                            <div class="tech-stack">
+                                <span class="tech-tag go">Go</span>
+                                <span class="tech-tag rust">Rust</span>
+                                <span class="tech-tag python">Python</span>
+                            </div>
+                            <div class="layer-description">
+                                <p><span class="highlight">冷热钱包、链上交互</span></p>
+                                <p>智能合约: <span class="highlight">Solidity / Rust / Move</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="architecture-layer" data-layer="data">
+                        <div class="layer-header">
+                            <div class="layer-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h3>数据与分析层</h3>
+                        </div>
+                        <div class="layer-content">
+                            <div class="tech-stack">
+                                <span class="tech-tag mysql">MySQL</span>
+                                <span class="tech-tag postgresql">PostgreSQL</span>
+                                <span class="tech-tag clickhouse">ClickHouse</span>
+                                <span class="tech-tag redis">Redis</span>
+                                <span class="tech-tag kafka">Kafka</span>
+                                <span class="tech-tag python">Python</span>
+                            </div>
+                            <div class="layer-description">
+                                <p><span class="highlight">风控模型 / 数据分析</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="architecture-layer" data-layer="infrastructure">
+                        <div class="layer-header">
+                            <div class="layer-icon">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <h3>基础设施层</h3>
+                        </div>
+                        <div class="layer-content">
+                            <div class="tech-stack">
+                                <span class="tech-tag kubernetes">Kubernetes</span>
+                                <span class="tech-tag docker">Docker</span>
+                                <span class="tech-tag nginx">Nginx</span>
+                            </div>
+                            <div class="layer-description">
+                                <p>监控: <span class="highlight">Prometheus / Grafana / ELK</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
