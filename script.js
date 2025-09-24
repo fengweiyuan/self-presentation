@@ -33,7 +33,7 @@ function initializeNavigation() {
         });
     });
 
-    // 滚动时导航栏样式变化
+    // 滚动时导航栏样式变化和当前章节高亮
     window.addEventListener('scroll', function() {
         if (window.scrollY > 100) {
             navbar.style.background = 'rgba(255, 255, 255, 0.98)';
@@ -42,6 +42,9 @@ function initializeNavigation() {
             navbar.style.background = 'rgba(255, 255, 255, 0.95)';
             navbar.style.boxShadow = 'none';
         }
+        
+        // 更新当前章节高亮
+        updateActiveNavLink();
     });
 
     // 平滑滚动到指定部分
@@ -688,5 +691,34 @@ function toggleDatabaseFullscreen() {
     }
 }
 
-
-
+// 更新当前章节的导航链接高亮
+function updateActiveNavLink() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    let currentSection = '';
+    
+    // 找到当前视窗中的章节
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100; // 提前100px触发
+        const sectionHeight = section.offsetHeight;
+        const scrollY = window.scrollY;
+        
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+            currentSection = section.getAttribute('id');
+        }
+    });
+    
+    // 如果没有找到当前章节，检查是否在页面顶部
+    if (!currentSection && window.scrollY < 200) {
+        currentSection = 'home';
+    }
+    
+    // 更新导航链接样式
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + currentSection) {
+            link.classList.add('active');
+        }
+    });
+}

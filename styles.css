@@ -105,6 +105,15 @@ body {
     color: #007aff;
 }
 
+.nav-link.active {
+    color: #007aff;
+    font-weight: 600;
+}
+
+.nav-link.active::after {
+    width: 100%;
+}
+
 .nav-link::after {
     content: '';
     position: absolute;
@@ -3024,5 +3033,407 @@ section {
     .tech-tag {
         font-size: 0.8rem;
         padding: 0.4rem 0.8rem;
+    }
+}
+
+/* 加密货币交易所子系统卡片式布局样式 */
+.crypto-subsystems {
+    padding: 100px 0;
+    background: #1a2332;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.crypto-subsystems::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.02)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.crypto-subsystems .section-header {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.crypto-subsystems .section-title {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.crypto-subsystems .section-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.subsystems-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.systems-group {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.systems-group::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    border-radius: 20px 20px 0 0;
+}
+
+.systems-group.core-systems::before {
+    background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+.systems-group.asset-systems::before,
+.systems-group.trading-systems::before {
+    background: linear-gradient(90deg, #43e97b, #38f9d7);
+}
+
+.systems-group.security-systems::before {
+    background: linear-gradient(90deg, #ff6b6b, #ee5a24);
+}
+
+.systems-group.finance-systems::before,
+.systems-group.innovation-systems::before {
+    background: linear-gradient(90deg, #74b9ff, #0984e3);
+}
+
+.systems-group:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.group-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    gap: 1rem;
+}
+
+.group-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    flex-shrink: 0;
+}
+
+.group-icon.core {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.group-icon.business {
+    background: linear-gradient(135deg, #43e97b, #38f9d7);
+}
+
+.group-icon.security {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+}
+
+.group-icon.support {
+    background: linear-gradient(135deg, #74b9ff, #0984e3);
+}
+
+.group-header h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: white;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.importance-badge {
+    background: #007aff;
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.importance-badge:contains("关键") {
+    background: #ff3b30;
+}
+
+.systems-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.system-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.system-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.6s ease;
+}
+
+.system-card:hover::before {
+    left: 100%;
+}
+
+.system-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.system-card.core {
+    border-color: rgba(102, 126, 234, 0.4);
+}
+
+.system-card.core:hover {
+    border-color: rgba(102, 126, 234, 0.8);
+    background: rgba(102, 126, 234, 0.1);
+}
+
+.system-card.business {
+    border-color: rgba(67, 233, 123, 0.4);
+}
+
+.system-card.business:hover {
+    border-color: rgba(67, 233, 123, 0.8);
+    background: rgba(67, 233, 123, 0.1);
+}
+
+.system-card.security {
+    border-color: rgba(255, 107, 107, 0.4);
+}
+
+.system-card.security:hover {
+    border-color: rgba(255, 107, 107, 0.8);
+    background: rgba(255, 107, 107, 0.1);
+}
+
+.system-card.support {
+    border-color: rgba(116, 185, 255, 0.4);
+}
+
+.system-card.support:hover {
+    border-color: rgba(116, 185, 255, 0.8);
+    background: rgba(116, 185, 255, 0.1);
+}
+
+.card-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 1.2rem;
+    color: white;
+    background: linear-gradient(135deg, #007aff, #0051d5);
+}
+
+.system-card.core .card-icon {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.system-card.business .card-icon {
+    background: linear-gradient(135deg, #43e97b, #38f9d7);
+}
+
+.system-card.security .card-icon {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+}
+
+.system-card.support .card-icon {
+    background: linear-gradient(135deg, #74b9ff, #0984e3);
+}
+
+.system-card h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    margin: 0 0 0.5rem 0;
+}
+
+.system-card p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+    font-style: italic;
+}
+
+.subsystems-note {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-left: 4px solid #007aff;
+}
+
+.note-content h4 {
+    color: #007aff;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.note-content p {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.legend {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.legend-icon {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+}
+
+.legend-icon.core {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.legend-icon.business {
+    background: linear-gradient(135deg, #43e97b, #38f9d7);
+}
+
+.legend-icon.security {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+}
+
+.legend-icon.support {
+    background: linear-gradient(135deg, #74b9ff, #0984e3);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .crypto-subsystems {
+        padding: 60px 0;
+    }
+    
+    .crypto-subsystems .section-title {
+        font-size: 2rem;
+    }
+    
+    .crypto-subsystems .section-subtitle {
+        font-size: 1rem;
+    }
+    
+    .subsystems-content {
+        gap: 2rem;
+    }
+    
+    .systems-group {
+        padding: 1.5rem;
+    }
+    
+    .group-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .group-icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .group-header h3 {
+        font-size: 1.3rem;
+    }
+    
+    .systems-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .system-card {
+        padding: 1.2rem;
+    }
+    
+    .card-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .system-card h4 {
+        font-size: 1rem;
+    }
+    
+    .system-card p {
+        font-size: 0.85rem;
+    }
+    
+    .legend {
+        gap: 1rem;
+    }
+    
+    .subsystems-note {
+        padding: 1.5rem;
+        margin-top: 2rem;
     }
 }
