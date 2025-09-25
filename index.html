@@ -19,7 +19,7 @@
         <div class="nav-container">
             <div class="nav-logo">
                 <i class="fas fa-database"></i>
-                <span>OKX数据库负责人应聘</span>
+                <span>DBA负责人应聘</span>
             </div>
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link">首页</a></li>
@@ -31,6 +31,7 @@
                 <li><a href="#skills" class="nav-link">技能</a></li>
                 <li><a href="#crypto-subsystems" class="nav-link">业务</a></li>
                 <li><a href="#crypto-architecture" class="nav-link">技术</a></li>
+                <li><a href="#crypto-org-structure" class="nav-link">职能</a></li>
                 <li><a href="#okx" class="nav-link">职责</a></li>
                 <li><a href="#database-mindmap" class="nav-link">内容</a></li>
                 <li><a href="#career-highlights" class="nav-link">亮点</a></li>
@@ -1216,6 +1217,182 @@
 
 
 
+    <!-- 加密货币交易所技术栈架构部分 -->
+    <section id="crypto-architecture" class="crypto-architecture">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">加密货币交易所通用分层技术栈架构</h2>
+                <p class="section-subtitle">数字货币交易所技术栈分层架构图，常见的技术栈与语言选择</p>
+            </div>
+            <div class="architecture-content">
+                <div class="architecture-diagram">
+                    <div class="architecture-layer" data-layer="frontend">
+                        <div class="layer-header">
+                            <div class="layer-icon">
+                                <i class="fas fa-desktop"></i>
+                            </div>
+                            <h3>前端交互层</h3>
+                        </div>
+                        <div class="layer-content">
+                            <div class="tech-stack">
+                                <span class="tech-tag react">React</span>
+                                <span class="tech-tag vue">Vue</span>
+                                <span class="tech-tag typescript">TypeScript</span>
+                            </div>
+                            <div class="layer-description">
+                                <p>移动端: <span class="highlight">Swift / Kotlin / Flutter</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="architecture-layer" data-layer="api">
+                        <div class="layer-header">
+                            <div class="layer-icon">
+                                <i class="fas fa-plug"></i>
+                            </div>
+                            <h3>API 接入层</h3>
+                        </div>
+                        <div class="layer-content">
+                            <div class="tech-stack">
+                                <span class="tech-tag nodejs">Node.js</span>
+                                <span class="tech-tag go">Go</span>
+                            </div>
+                            <div class="layer-description">
+                                <p><span class="highlight">REST API / WebSocket</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="architecture-layer" data-layer="business">
+                        <div class="layer-header">
+                            <div class="layer-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <h3>业务逻辑层</h3>
+                        </div>
+                        <div class="layer-content">
+                            <div class="tech-stack">
+                                <span class="tech-tag java">Java</span>
+                                <span class="tech-tag kotlin">Kotlin</span>
+                            </div>
+                            <div class="layer-description">
+                                <p>负责订单、风控、清算、支付网关</p>
+                                <div class="okx-highlight">
+                                    <i class="fas fa-star"></i>
+                                    <span>数字货币交易所</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="architecture-layer core-layer" data-layer="core">
+                        <div class="layer-header">
+                            <div class="layer-icon">
+                                <i class="fas fa-microchip"></i>
+                            </div>
+                            <h3>核心撮合引擎</h3>
+                        </div>
+                        <div class="layer-content">
+                            <div class="tech-stack">
+                                <span class="tech-tag cpp">C++</span>
+                                <span class="tech-tag rust">Rust</span>
+                                <span class="tech-tag go">Go</span>
+                            </div>
+                            <div class="layer-description">
+                                <p><span class="highlight-core">高性能撮合</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="architecture-layer" data-layer="blockchain">
+                        <div class="layer-header">
+                            <div class="layer-icon">
+                                <i class="fas fa-link"></i>
+                            </div>
+                            <h3>区块链与钱包层</h3>
+                        </div>
+                        <div class="layer-content">
+                            <div class="tech-stack">
+                                <span class="tech-tag go">Go</span>
+                                <span class="tech-tag rust">Rust</span>
+                                <span class="tech-tag python">Python</span>
+                            </div>
+                            <div class="layer-description">
+                                <p><span class="highlight">冷热钱包、链上交互</span></p>
+                                <p>智能合约: <span class="highlight">Solidity / Rust / Move</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="architecture-layer" data-layer="data">
+                        <div class="layer-header">
+                            <div class="layer-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h3>数据库持久层</h3>
+                        </div>
+                        <div class="layer-content">
+                            <div class="tech-stack">
+                                <span class="tech-tag mysql">MySQL</span>
+                                <span class="tech-tag postgresql">PostgreSQL</span>
+                                <span class="tech-tag clickhouse">ClickHouse</span>
+                                <span class="tech-tag redis">Redis</span>
+                                <span class="tech-tag kafka">Kafka</span>
+                                <span class="tech-tag python">Python</span>
+                            </div>
+                            <div class="layer-description">
+                                <p><span class="highlight">数据分析 / 实时计算</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="architecture-layer" data-layer="risk">
+                        <div class="layer-header">
+                            <div class="layer-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>风控与分析层</h3>
+                        </div>
+                        <div class="layer-content">
+                            <div class="tech-stack">
+                                <span class="tech-tag python">Python</span>
+                                <span class="tech-tag java">Java</span>
+                                <span class="tech-tag go">Go</span>
+                                <span class="tech-tag redis">Redis</span>
+                                <span class="tech-tag kafka">Kafka</span>
+                            </div>
+                            <div class="layer-description">
+                                <p><span class="highlight">实时风控 / 反洗钱 / 安全防护</span></p>
+                                <p>机器学习: <span class="highlight">TensorFlow / PyTorch</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="architecture-layer" data-layer="infrastructure">
+                        <div class="layer-header">
+                            <div class="layer-icon">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <h3>基础设施层</h3>
+                        </div>
+                        <div class="layer-content">
+                            <div class="tech-stack">
+                                <span class="tech-tag kubernetes">Kubernetes</span>
+                                <span class="tech-tag docker">Docker</span>
+                                <span class="tech-tag nginx">Nginx</span>
+                                <span class="tech-tag kafka">Kafka</span>
+                                <span class="tech-tag centos">CentOS</span>
+                            </div>
+                            <div class="layer-description">
+                                <p>监控: <span class="highlight">Prometheus / Grafana / ELK</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 加密货币交易所子系统架构部分 -->
     <section id="crypto-subsystems" class="crypto-subsystems">
         <div class="container">
@@ -1467,175 +1644,116 @@
         </div>
     </section>
 
-    <!-- 加密货币交易所技术栈架构部分 -->
-    <section id="crypto-architecture" class="crypto-architecture">
+    <!-- 加密货币交易所通用职能架构部分 -->
+    <section id="crypto-org-structure" class="crypto-org-structure">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">加密货币交易所分层技术栈架构</h2>
-                <p class="section-subtitle">数字货币交易所技术栈分层架构图，展示了常见的技术栈与语言选择</p>
+                <h2 class="section-title">加密货币交易所通用职能架构</h2>
+                <p class="section-subtitle">数字货币交易所的组织架构与职能分工</p>
             </div>
-            <div class="architecture-content">
-                <div class="architecture-diagram">
-                    <div class="architecture-layer" data-layer="frontend">
-                        <div class="layer-header">
-                            <div class="layer-icon">
-                                <i class="fas fa-desktop"></i>
-                            </div>
-                            <h3>前端交互层</h3>
-                        </div>
-                        <div class="layer-content">
-                            <div class="tech-stack">
-                                <span class="tech-tag react">React</span>
-                                <span class="tech-tag vue">Vue</span>
-                                <span class="tech-tag typescript">TypeScript</span>
-                            </div>
-                            <div class="layer-description">
-                                <p>移动端: <span class="highlight">Swift / Kotlin / Flutter</span></p>
-                            </div>
-                        </div>
+            <div class="org-structure-content">
+                <div class="org-table">
+                    <div class="table-header">
+                        <div class="table-cell">大部门 / 团队</div>
+                        <div class="table-cell">职能 / 责任 / 备注</div>
                     </div>
-
-                    <div class="architecture-layer" data-layer="api">
-                        <div class="layer-header">
-                            <div class="layer-icon">
-                                <i class="fas fa-plug"></i>
-                            </div>
-                            <h3>API 接入层</h3>
-                        </div>
-                        <div class="layer-content">
-                            <div class="tech-stack">
-                                <span class="tech-tag nodejs">Node.js</span>
-                                <span class="tech-tag go">Go</span>
-                            </div>
-                            <div class="layer-description">
-                                <p><span class="highlight">REST API / WebSocket</span></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="architecture-layer" data-layer="business">
-                        <div class="layer-header">
-                            <div class="layer-icon">
+                    <div class="table-row">
+                        <div class="table-cell">
+                            <div class="dept-name">
                                 <i class="fas fa-cogs"></i>
+                                <span>产品 / 产品线</span>
                             </div>
-                            <h3>业务逻辑层</h3>
                         </div>
-                        <div class="layer-content">
-                            <div class="tech-stack">
-                                <span class="tech-tag java">Java</span>
-                                <span class="tech-tag kotlin">Kotlin</span>
-                            </div>
-                            <div class="layer-description">
-                                <p>负责订单、风控、清算、支付网关</p>
-                                <div class="okx-highlight">
-                                    <i class="fas fa-star"></i>
-                                    <span>数字货币交易所</span>
-                                </div>
-                            </div>
+                        <div class="table-cell">
+                            <div class="dept-desc">负责交易平台（spot、期货／永续合约／杠杆交易）、衍生品、NFT 市场、Wallet／Web3 服务等产品的设计、开发。涉及产品经理、设计、用户体验、用户界面等角色。</div>
                         </div>
                     </div>
-
-                    <div class="architecture-layer core-layer" data-layer="core">
-                        <div class="layer-header">
-                            <div class="layer-icon">
-                                <i class="fas fa-microchip"></i>
-                            </div>
-                            <h3>核心撮合引擎</h3>
-                        </div>
-                        <div class="layer-content">
-                            <div class="tech-stack">
-                                <span class="tech-tag cpp">C++</span>
-                                <span class="tech-tag rust">Rust</span>
-                                <span class="tech-tag go">Go</span>
-                            </div>
-                            <div class="layer-description">
-                                <p><span class="highlight-core">高性能撮合</span></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="architecture-layer" data-layer="blockchain">
-                        <div class="layer-header">
-                            <div class="layer-icon">
-                                <i class="fas fa-link"></i>
-                            </div>
-                            <h3>区块链与钱包层</h3>
-                        </div>
-                        <div class="layer-content">
-                            <div class="tech-stack">
-                                <span class="tech-tag go">Go</span>
-                                <span class="tech-tag rust">Rust</span>
-                                <span class="tech-tag python">Python</span>
-                            </div>
-                            <div class="layer-description">
-                                <p><span class="highlight">冷热钱包、链上交互</span></p>
-                                <p>智能合约: <span class="highlight">Solidity / Rust / Move</span></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="architecture-layer" data-layer="data">
-                        <div class="layer-header">
-                            <div class="layer-icon">
-                                <i class="fas fa-database"></i>
-                            </div>
-                            <h3>数据库持久层</h3>
-                        </div>
-                        <div class="layer-content">
-                            <div class="tech-stack">
-                                <span class="tech-tag mysql">MySQL</span>
-                                <span class="tech-tag postgresql">PostgreSQL</span>
-                                <span class="tech-tag clickhouse">ClickHouse</span>
-                                <span class="tech-tag redis">Redis</span>
-                                <span class="tech-tag kafka">Kafka</span>
-                                <span class="tech-tag python">Python</span>
-                            </div>
-                            <div class="layer-description">
-                                <p><span class="highlight">数据分析 / 实时计算</span></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="architecture-layer" data-layer="risk">
-                        <div class="layer-header">
-                            <div class="layer-icon">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                            <h3>风控与分析层</h3>
-                        </div>
-                        <div class="layer-content">
-                            <div class="tech-stack">
-                                <span class="tech-tag python">Python</span>
-                                <span class="tech-tag java">Java</span>
-                                <span class="tech-tag go">Go</span>
-                                <span class="tech-tag redis">Redis</span>
-                                <span class="tech-tag kafka">Kafka</span>
-                            </div>
-                            <div class="layer-description">
-                                <p><span class="highlight">实时风控 / 反洗钱 / 安全防护</span></p>
-                                <p>机器学习: <span class="highlight">TensorFlow / PyTorch</span></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="architecture-layer" data-layer="infrastructure">
-                        <div class="layer-header">
-                            <div class="layer-icon">
+                    <div class="table-row">
+                        <div class="table-cell">
+                            <div class="dept-name">
                                 <i class="fas fa-server"></i>
+                                <span>工程 / 技术 / 基础设施</span>
                             </div>
-                            <h3>基础设施层</h3>
                         </div>
-                        <div class="layer-content">
-                            <div class="tech-stack">
-                                <span class="tech-tag kubernetes">Kubernetes</span>
-                                <span class="tech-tag docker">Docker</span>
-                                <span class="tech-tag nginx">Nginx</span>
-                                <span class="tech-tag kafka">Kafka</span>
-                                <span class="tech-tag centos">CentOS</span>
+                        <div class="table-cell">
+                            <div class="dept-desc">实现产品功能、确保系统稳定／性能、安全，以及支撑大规模的交易和 Web3 服务。包含后端、前端、移动工程（例如 app）、区块链／节点／Wallet 技术、跨链／协议／链上服务等。</div>
+                        </div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-cell">
+                            <div class="dept-name">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>风险管理 / 风控</span>
                             </div>
-                            <div class="layer-description">
-                                <p>监控: <span class="highlight">Prometheus / Grafana / ELK</span></p>
+                        </div>
+                        <div class="table-cell">
+                            <div class="dept-desc">对交易风险、市场风险、信用风险、对手风险、技术故障风险等进行监控与控制。交易异常行为、清算风险等也由此团队负责。</div>
+                        </div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-cell">
+                            <div class="dept-name">
+                                <i class="fas fa-gavel"></i>
+                                <span>合规 / 法律 / 监管政策</span>
                             </div>
+                        </div>
+                        <div class="table-cell">
+                            <div class="dept-desc">包括全球各地法规遵守（KYC / AML / 制裁名单 / 隐私 / 消费者保护等）、产品合规审查、监管政策应对、与各国监管机构的沟通。</div>
+                        </div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-cell">
+                            <div class="dept-name">
+                                <i class="fas fa-lock"></i>
+                                <span>安全 / 审计 / 基础治理</span>
+                            </div>
+                        </div>
+                        <div class="table-cell">
+                            <div class="dept-desc">安全团队负责平台安全（包括钱包、资产安全、冷热钱包管理、审计漏洞／渗透测试等）；审计团队负责内部控制、基础设施审计，财务审计等。</div>
+                        </div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-cell">
+                            <div class="dept-name">
+                                <i class="fas fa-chart-line"></i>
+                                <span>市场 / 品牌 / 社区 / 用户增长</span>
+                            </div>
+                        </div>
+                        <div class="table-cell">
+                            <div class="dept-desc">包括市场推广、品牌宣传、内容／社会媒体／广告／合作伙伴关系／赞助等，以及用户获取、用户留存等增长策略。</div>
+                        </div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-cell">
+                            <div class="dept-name">
+                                <i class="fas fa-headset"></i>
+                                <span>客户支持 / 运营 / 交易支持</span>
+                            </div>
+                        </div>
+                        <div class="table-cell">
+                            <div class="dept-desc">用户支持（客服）、提款/充值运营、交易后台支持、纠纷处理、合约执行等日常运营事务。</div>
+                        </div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-cell">
+                            <div class="dept-name">
+                                <i class="fas fa-calculator"></i>
+                                <span>财务 / 会计 / 资金管理</span>
+                            </div>
+                        </div>
+                        <div class="table-cell">
+                            <div class="dept-desc">公司内部会计、资金监控、审计报告、预算、成本管理、税务等。资产负债管理、Proof of Reserves（资产证明）之类报告也可能在这一类或与法务／合规相交。</div>
+                        </div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-cell">
+                            <div class="dept-name">
+                                <i class="fas fa-globe"></i>
+                                <span>地域 / 本地化 / 在地团队</span>
+                            </div>
+                        </div>
+                        <div class="table-cell">
+                            <div class="dept-desc">围绕不同国家／地区的业务（例如合规、市场策略、本地支付／法币通道、本地客户运营等），有专门区域负责人或区域 CEO 的角色。服务语言、法规、支付体系等因地制宜。</div>
                         </div>
                     </div>
                 </div>
@@ -1869,10 +1987,35 @@
             <div class="certifications-content">
                 <div class="certifications-table">
                     <div class="table-header">
-                        <div class="table-cell">认证名称</div>
-                        <div class="table-cell">认证时间</div>
-                        <div class="table-cell">认证等级 / 意义</div>
+                        <div class="table-cell header-cell">
+                            <i class="fas fa-certificate"></i>
+                            <span>认证名称</span>
+                        </div>
+                        <div class="table-cell header-cell">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>认证时间</span>
+                        </div>
+                        <div class="table-cell header-cell">
+                            <i class="fas fa-star"></i>
+                            <span>认证等级</span>
+                        </div>
                     </div>
+                    
+                    <div class="table-row">
+                        <div class="table-cell">
+                            <div class="cert-name">
+                                <i class="fab fa-redhat"></i>
+                                <span>RHCE 红帽认证工程师</span>
+                            </div>
+                        </div>
+                        <div class="table-cell">
+                            <div class="cert-date">2009</div>
+                        </div>
+                        <div class="table-cell">
+                            <div class="cert-desc">红帽 Linux 系统运维高级认证</div>
+                        </div>
+                    </div>
+                    
                     <div class="table-row">
                         <div class="table-cell">
                             <div class="cert-name">
@@ -1887,6 +2030,7 @@
                             <div class="cert-desc">网络技术与运维能力认证</div>
                         </div>
                     </div>
+                    
                     <div class="table-row">
                         <div class="table-cell">
                             <div class="cert-name">
@@ -1901,6 +2045,7 @@
                             <div class="cert-desc">国家副高职称，项目管理能力认证</div>
                         </div>
                     </div>
+                    
                     <div class="table-row">
                         <div class="table-cell">
                             <div class="cert-name">
@@ -1913,20 +2058,6 @@
                         </div>
                         <div class="table-cell">
                             <div class="cert-desc">Oracle 官方高级数据库认证</div>
-                        </div>
-                    </div>
-                    <div class="table-row">
-                        <div class="table-cell">
-                            <div class="cert-name">
-                                <i class="fab fa-redhat"></i>
-                                <span>RHCE 红帽认证工程师</span>
-                            </div>
-                        </div>
-                        <div class="table-cell">
-                            <div class="cert-date">2011</div>
-                        </div>
-                        <div class="table-cell">
-                            <div class="cert-desc">红帽 Linux 系统运维高级认证</div>
                         </div>
                     </div>
                 </div>
@@ -2069,3 +2200,4 @@
     <script src="script.js"></script>
 </body>
 </html>
+

@@ -2660,76 +2660,161 @@ section {
 .certifications-table {
     max-width: 1000px;
     margin: 0 auto;
-    background: #0f1419;
+    background: #1a2332;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid #2a3441;
+    position: relative;
+}
+
+.certifications-table::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4);
 }
 
 .table-header {
     display: grid;
-    grid-template-columns: 2fr 1fr 2fr;
+    grid-template-columns: 2fr 0.5fr 2.5fr;
     background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-    padding: 20px;
+    padding: 0;
     font-weight: 600;
     font-size: 1.1rem;
     color: white;
+    position: relative;
+}
+
+.table-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4);
+}
+
+.header-cell {
+    padding: 25px 30px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.header-cell:last-child {
+    border-right: none;
+}
+
+.header-cell:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.header-cell i {
+    font-size: 1.2rem;
+    color: #ffffff;
+    width: 24px;
+    text-align: center;
 }
 
 .table-row {
     display: grid;
-    grid-template-columns: 2fr 1fr 2fr;
+    grid-template-columns: 2fr 0.5fr 2.5fr;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
+    position: relative;
 }
 
 .table-row:hover {
-    background: #374151;
+    background: rgba(59, 130, 246, 0.05);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .table-row:last-child {
     border-bottom: none;
 }
 
+.table-row::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, #3b82f6, #8b5cf6);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.table-row:hover::before {
+    transform: scaleY(1);
+}
+
 .table-cell {
-    padding: 20px;
+    padding: 25px 30px;
     display: flex;
     align-items: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.table-cell:last-child {
+    border-right: none;
 }
 
 .cert-name {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 15px;
     font-weight: 600;
     color: #ffffff;
+    font-size: 1.1rem;
 }
 
 .cert-name i {
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #3b82f6;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    background: rgba(59, 130, 246, 0.1);
+    border-radius: 8px;
+    border: 1px solid rgba(59, 130, 246, 0.2);
 }
 
 .cert-date {
     background: linear-gradient(135deg, #10b981, #059669);
     color: white;
-    padding: 6px 12px;
-    border-radius: 15px;
+    padding: 8px 12px;
+    border-radius: 20px;
     font-size: 0.9rem;
     font-weight: 600;
     text-align: center;
     box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    display: inline-block;
+    min-width: 60px;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    white-space: nowrap;
 }
 
 .cert-desc {
     color: #d1d5db;
-    line-height: 1.5;
+    line-height: 1.6;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    border-left: 2px solid #3b82f6;
 }
 
 /* 响应式设计 */
@@ -2745,7 +2830,7 @@ section {
     .table-header,
     .table-row {
         grid-template-columns: 1fr;
-        gap: 10px;
+        gap: 0;
     }
     
     .table-header {
@@ -2757,11 +2842,22 @@ section {
         flex-direction: column;
         padding: 20px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        margin-bottom: 1rem;
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 15px;
+    }
+    
+    .table-row:last-child {
+        margin-bottom: 0;
     }
     
     .table-cell {
-        padding: 10px 0;
+        padding: 15px 0;
+        border-right: none;
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
     }
     
     .table-cell:last-child {
@@ -2772,8 +2868,9 @@ section {
         content: attr(data-label);
         font-weight: 600;
         color: #3b82f6;
-        margin-bottom: 5px;
+        margin-bottom: 8px;
         display: block;
+        font-size: 0.9rem;
     }
     
     .table-cell:nth-child(1):before {
@@ -2786,6 +2883,26 @@ section {
     
     .table-cell:nth-child(3):before {
         content: "认证等级/意义";
+    }
+    
+    .cert-name {
+        font-size: 1rem;
+        gap: 10px;
+    }
+    
+    .cert-name i {
+        width: 24px;
+        height: 24px;
+        font-size: 1rem;
+    }
+    
+    .cert-date {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+    
+    .cert-desc {
+        font-size: 0.95rem;
     }
 }
 
@@ -2802,10 +2919,30 @@ section {
         padding: 15px;
     }
     
+    .table-cell {
+        padding: 12px 0;
+    }
+    
     .cert-name {
+        font-size: 0.95rem;
         flex-direction: column;
         align-items: flex-start;
         gap: 8px;
+    }
+    
+    .cert-name i {
+        width: 20px;
+        height: 20px;
+        font-size: 0.9rem;
+    }
+    
+    .cert-date {
+        font-size: 0.85rem;
+        padding: 6px 12px;
+    }
+    
+    .cert-desc {
+        font-size: 0.9rem;
     }
 }
 
@@ -3609,5 +3746,121 @@ section {
         font-size: 1.5rem;
         width: 35px;
         height: 35px;
+    }
+}
+
+/* 加密货币交易所通用职能架构样式 */
+.crypto-org-structure {
+    padding: 100px 0;
+    background: #1a2332;
+    color: white;
+}
+
+.org-structure-content {
+    margin-top: 50px;
+}
+
+.org-table {
+    background: #2d3748;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    border: 1px solid #4a5568;
+}
+
+.table-header {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.table-header .table-cell {
+    padding: 25px 30px;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.table-header .table-cell:last-child {
+    border-right: none;
+}
+
+.table-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    border-bottom: 1px solid #4a5568;
+    transition: all 0.3s ease;
+}
+
+.table-row:hover {
+    background: #2a3441;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.table-row:last-child {
+    border-bottom: none;
+}
+
+.table-cell {
+    padding: 25px 30px;
+    border-right: 1px solid #4a5568;
+    display: flex;
+    align-items: center;
+}
+
+.table-cell:last-child {
+    border-right: none;
+}
+
+.dept-name {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #e2e8f0;
+}
+
+.dept-name i {
+    font-size: 1.3rem;
+    color: #667eea;
+    width: 24px;
+    text-align: center;
+}
+
+.dept-desc {
+    color: #a0aec0;
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .table-header,
+    .table-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .table-header .table-cell,
+    .table-cell {
+        padding: 20px;
+        border-right: none;
+        border-bottom: 1px solid #4a5568;
+    }
+    
+    .table-header .table-cell:last-child,
+    .table-cell:last-child {
+        border-bottom: none;
+    }
+    
+    .dept-name {
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    
+    .dept-desc {
+        font-size: 0.95rem;
     }
 }
