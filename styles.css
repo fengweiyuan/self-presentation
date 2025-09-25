@@ -779,6 +779,149 @@ section {
     color: white;
 }
 
+/* 平台理念与目标部分 */
+.platform-philosophy {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+    color: white;
+}
+
+.philosophy-content {
+    max-width: 1000px;
+    margin: 0 auto 60px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.philosophy-card {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    border-radius: 20px;
+    padding: 30px 35px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    border: 1px solid #475569;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.philosophy-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.philosophy-card:hover::before {
+    transform: scaleX(1);
+}
+
+.philosophy-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+    border-color: #64748b;
+}
+
+.philosophy-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.philosophy-header i {
+    font-size: 1.8rem;
+    color: #3b82f6;
+    background: rgba(59, 130, 246, 0.1);
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.philosophy-header h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
+}
+
+.philosophy-text p {
+    color: #cbd5e1;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    margin: 0;
+    text-align: justify;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .platform-philosophy {
+        padding: 60px 0;
+    }
+    
+    .philosophy-content {
+        gap: 20px;
+    }
+    
+    .philosophy-card {
+        padding: 25px 30px;
+    }
+    
+    .philosophy-header {
+        gap: 12px;
+        margin-bottom: 15px;
+    }
+    
+    .philosophy-header i {
+        font-size: 1.5rem;
+        padding: 10px;
+    }
+    
+    .philosophy-header h3 {
+        font-size: 1.3rem;
+    }
+    
+    .philosophy-text p {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+}
+
+@media (max-width: 480px) {
+    .platform-philosophy {
+        padding: 50px 0;
+    }
+    
+    .philosophy-card {
+        padding: 20px 25px;
+    }
+    
+    .philosophy-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .philosophy-header i {
+        font-size: 1.3rem;
+        padding: 8px;
+    }
+    
+    .philosophy-header h3 {
+        font-size: 1.2rem;
+    }
+    
+    .philosophy-text p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+}
+
 .platform-capabilities .section-title {
     color: white;
     text-align: center;
@@ -2626,7 +2769,7 @@ section {
 /* 资质认证部分样式 */
 .certifications {
     padding: 100px 0;
-    background: #0f1419;
+    background: #1a2332;
     color: white;
     position: relative;
     overflow: hidden;
@@ -2657,6 +2800,104 @@ section {
     z-index: 2;
 }
 
+.certifications-list {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.certification-card {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    border-radius: 15px;
+    padding: 25px 30px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid #475569;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.certification-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.certification-card:hover::before {
+    transform: scaleX(1);
+}
+
+.certification-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border-color: #64748b;
+}
+
+.cert-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.8rem;
+    flex-shrink: 0;
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+}
+
+.cert-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cert-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.cert-details {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.cert-date {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.cert-level {
+    color: #cbd5e1;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
 .certifications-table {
     max-width: 1000px;
     margin: 0 auto;
@@ -2680,7 +2921,7 @@ section {
 
 .table-header {
     display: grid;
-    grid-template-columns: 2fr 0.5fr 2.5fr;
+    grid-template-columns: 1.5fr 0.8fr 2.7fr;
     background: linear-gradient(135deg, #3b82f6, #1d4ed8);
     padding: 0;
     font-weight: 600;
@@ -2725,7 +2966,7 @@ section {
 
 .table-row {
     display: grid;
-    grid-template-columns: 2fr 0.5fr 2.5fr;
+    grid-template-columns: 1.5fr 0.8fr 2.7fr;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
     position: relative;
@@ -2760,9 +3001,12 @@ section {
 .table-cell {
     padding: 25px 30px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     border-right: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .table-cell:last-child {
@@ -2808,13 +3052,17 @@ section {
 
 .cert-desc {
     color: #d1d5db;
-    line-height: 1.6;
-    font-size: 1rem;
+    line-height: 1.4;
+    font-size: 0.95rem;
     font-weight: 500;
     padding: 8px 12px;
     background: rgba(255, 255, 255, 0.03);
     border-radius: 8px;
     border-left: 2px solid #3b82f6;
+    white-space: normal;
+    word-wrap: break-word;
+    max-height: 60px;
+    overflow: hidden;
 }
 
 /* 响应式设计 */
@@ -2827,81 +3075,35 @@ section {
         font-size: 2rem;
     }
     
-    .table-header,
-    .table-row {
-        grid-template-columns: 1fr;
-        gap: 0;
+    .certifications-list {
+        gap: 15px;
     }
     
-    .table-header {
-        display: none;
+    .certification-card {
+        padding: 20px 25px;
+        gap: 20px;
     }
     
-    .table-row {
-        display: flex;
-        flex-direction: column;
-        padding: 20px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        margin-bottom: 1rem;
-        background: rgba(255, 255, 255, 0.02);
-        border-radius: 15px;
-    }
-    
-    .table-row:last-child {
-        margin-bottom: 0;
-    }
-    
-    .table-cell {
-        padding: 15px 0;
-        border-right: none;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .table-cell:last-child {
-        border-bottom: none;
-    }
-    
-    .table-cell:before {
-        content: attr(data-label);
-        font-weight: 600;
-        color: #3b82f6;
-        margin-bottom: 8px;
-        display: block;
-        font-size: 0.9rem;
-    }
-    
-    .table-cell:nth-child(1):before {
-        content: "认证名称";
-    }
-    
-    .table-cell:nth-child(2):before {
-        content: "认证时间";
-    }
-    
-    .table-cell:nth-child(3):before {
-        content: "认证等级/意义";
+    .cert-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
     }
     
     .cert-name {
-        font-size: 1rem;
-        gap: 10px;
+        font-size: 1.2rem;
     }
     
-    .cert-name i {
-        width: 24px;
-        height: 24px;
-        font-size: 1rem;
+    .cert-details {
+        gap: 15px;
     }
     
     .cert-date {
-        font-size: 0.9rem;
-        padding: 8px 16px;
+        font-size: 0.85rem;
+        padding: 5px 12px;
     }
     
-    .cert-desc {
+    .cert-level {
         font-size: 0.95rem;
     }
 }
@@ -2915,34 +3117,37 @@ section {
         font-size: 1.8rem;
     }
     
-    .table-row {
-        padding: 15px;
+    .certification-card {
+        padding: 15px 20px;
+        gap: 15px;
+        flex-direction: column;
+        text-align: center;
     }
     
-    .table-cell {
-        padding: 12px 0;
+    .cert-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
     }
     
     .cert-name {
-        font-size: 0.95rem;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
+        font-size: 1.1rem;
     }
     
-    .cert-name i {
-        width: 20px;
-        height: 20px;
-        font-size: 0.9rem;
+    .cert-details {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
     }
     
     .cert-date {
-        font-size: 0.85rem;
-        padding: 6px 12px;
+        font-size: 0.8rem;
+        padding: 4px 10px;
     }
     
-    .cert-desc {
+    .cert-level {
         font-size: 0.9rem;
+        text-align: center;
     }
 }
 
@@ -3807,7 +4012,10 @@ section {
     padding: 25px 30px;
     border-right: 1px solid #4a5568;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .table-cell:last-child {
